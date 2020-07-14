@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name" translatable="false">AndroidCourseTasks</string>
-    <string name="locale_name">Default location</string>
+    <string name="locale_name">Default location HORIZONTAL</string>
 </resources>
