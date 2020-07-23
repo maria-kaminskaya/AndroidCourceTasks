@@ -12,6 +12,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Task1" />
+            <option value="$PROJECT_DIR$/task2" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

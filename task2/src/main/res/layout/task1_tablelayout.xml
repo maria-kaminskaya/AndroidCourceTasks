@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Task1 TableLayout-->
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/margin">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin">
+        <ImageView
+            android:layout_width="@dimen/sizeImage"
+            android:layout_height="@dimen/sizeImage"
+            android:src="@drawable/attractions"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin3"
+            android:fontFamily="sans-serif"
+            android:text="@string/attractions"
+            android:textSize="@dimen/sizeText"
+            android:textStyle="bold" />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin">
+        <ImageView
+            android:layout_width="@dimen/sizeImage"
+            android:layout_height="@dimen/sizeImage"
+            android:src="@drawable/dining"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin3"
+            android:fontFamily="sans-serif"
+            android:text="@string/dining"
+            android:textSize="@dimen/sizeText"
+            android:textStyle="bold" />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin">
+        <ImageView
+            android:layout_width="@dimen/sizeImage"
+            android:layout_height="@dimen/sizeImage"
+            android:src="@drawable/education"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin3"
+            android:fontFamily="sans-serif"
+            android:text="@string/education"
+            android:textSize="@dimen/sizeText"
+            android:textStyle="bold" />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin">
+        <ImageView
+            android:layout_width="@dimen/sizeImage"
+            android:layout_height="@dimen/sizeImage"
+            android:src="@drawable/family"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin3"
+            android:fontFamily="sans-serif"
+            android:text="@string/family"
+            android:textSize="@dimen/sizeText"
+            android:textStyle="bold" />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin">
+        <ImageView
+            android:layout_width="@dimen/sizeImage"
+            android:layout_height="@dimen/sizeImage"
+            android:src="@drawable/health"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin3"
+            android:fontFamily="sans-serif"
+            android:text="@string/health"
+            android:textSize="@dimen/sizeText"
+            android:textStyle="bold" />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin">
+        <ImageView
+            android:layout_width="@dimen/sizeImage"
+            android:layout_height="@dimen/sizeImage"
+            android:src="@drawable/office"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin3"
+            android:fontFamily="sans-serif"
+            android:text="@string/office"
+            android:textSize="@dimen/sizeText"
+            android:textStyle="bold" />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin">
+        <ImageView
+            android:layout_width="@dimen/sizeImage"
+            android:layout_height="@dimen/sizeImage"
+            android:src="@drawable/promotions"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin3"
+            android:fontFamily="sans-serif"
+            android:text="@string/promotions"
+            android:textSize="@dimen/sizeText"
+            android:textStyle="bold" />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin">
+        <ImageView
+            android:layout_width="@dimen/sizeImage"
+            android:layout_height="@dimen/sizeImage"
+            android:src="@drawable/radio"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin3"
+            android:fontFamily="sans-serif"
+            android:text="@string/radio"
+            android:textSize="@dimen/sizeText"
+            android:textStyle="bold" />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin">
+        <ImageView
+            android:layout_width="@dimen/sizeImage"
+            android:layout_height="@dimen/sizeImage"
+            android:src="@drawable/recipes"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin3"
+            android:fontFamily="sans-serif"
+            android:text="@string/recipes"
+            android:textSize="@dimen/sizeText"
+            android:textStyle="bold" />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin">
+        <ImageView
+            android:layout_width="@dimen/sizeImage"
+            android:layout_height="@dimen/sizeImage"
+            android:src="@drawable/sports"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin3"
+            android:fontFamily="sans-serif"
+            android:text="@string/sports"
+            android:textSize="@dimen/sizeText"
+            android:textStyle="bold" />
+    </TableRow>
+
+</TableLayout>
