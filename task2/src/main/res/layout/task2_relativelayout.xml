@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Task2 RelativeLayout-->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageViewPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/photo"
+        android:scaleType="centerCrop"
+        android:src="@drawable/photo" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/imageViewPhoto"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/marginM"
+        android:layout_marginTop="@dimen/marginM"
+        android:contentDescription="@string/camera"
+        android:src="@drawable/camera" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageViewPhoto"
+        android:layout_margin="@dimen/marginL">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:hint="@string/title"
+            android:inputType="text"
+            android:lineSpacingExtra="@dimen/marginXS"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:textColor="@color/colorGrey"
+            android:textColorHint="@color/colorGrey"
+            android:textColorLink="@color/colorGrey"
+            android:textSize="@dimen/sizeText" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutPrice"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textInputLayoutTitle"
+        android:layout_marginEnd="@dimen/marginL"
+        android:layout_marginStart="@dimen/marginL">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:hint="@string/price"
+            android:inputType="text"
+            android:lineSpacingExtra="@dimen/marginXS"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:textColor="@color/colorGrey"
+            android:textColorHint="@color/colorGrey"
+            android:textColorLink="@color/colorGrey"
+            android:textSize="@dimen/sizeText" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutLocation"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textInputLayoutTitle"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/textInputLayoutPrice">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:hint="@string/location"
+            android:inputType="text"
+            android:lineSpacingExtra="@dimen/marginXS"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:textColor="@color/colorGrey"
+            android:textColorHint="@color/colorGrey"
+            android:textColorLink="@color/colorGrey"
+            android:textSize="@dimen/sizeText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/imageViewLocation"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="@dimen/marginL"
+        android:layout_below="@+id/textInputLayoutTitle"
+        android:layout_alignBottom="@+id/textInputLayoutLocation"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/location"
+        android:src="@drawable/location" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textInputLayoutLocation"
+        android:layout_margin="@dimen/marginL">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:hint="@string/description"
+            android:inputType="text"
+            android:lineSpacingExtra="@dimen/marginXS"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:textColor="@color/colorGrey"
+            android:textColorHint="@color/colorGrey"
+            android:textColorLink="@color/colorGrey"
+            android:textSize="@dimen/sizeText" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutInventory"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginL"
+        android:layout_below="@+id/textInputLayoutDescription">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:hint="@string/inventory"
+            android:inputType="text"
+            android:lineSpacingExtra="@dimen/marginXS"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:textColor="@color/colorGrey"
+            android:textColorHint="@color/colorGrey"
+            android:textColorLink="@color/colorGrey"
+            android:textSize="@dimen/sizeText" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutWeight"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textInputLayoutDescription"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/marginL">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:hint="@string/weight"
+            android:inputType="text"
+            android:lineSpacingExtra="@dimen/marginXS"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:textColor="@color/colorGrey"
+            android:textColorHint="@color/colorGrey"
+            android:textColorLink="@color/colorGrey"
+            android:textSize="@dimen/sizeText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</RelativeLayout>
