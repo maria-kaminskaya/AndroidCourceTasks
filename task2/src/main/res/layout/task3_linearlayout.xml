@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Task3 LinearLayout-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sing_in"
+        android:textSize="@dimen/sizeTextL"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
+        android:layout_marginStart="@dimen/marginL"
+        android:layout_marginTop="@dimen/marginXL"
+        android:layout_marginBottom="@dimen/marginM"/>
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="Email"/>-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginXL"
+        android:layout_marginEnd="@dimen/marginXL">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email"
+            android:gravity="center_vertical"
+            android:inputType="text"
+            android:lineSpacingExtra="@dimen/marginXS"
+            android:padding="@dimen/marginM"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:textColor="@color/colorGrey"
+            android:textColorHint="@color/colorGrey"
+            android:textColorLink="@color/colorGrey"
+            android:textSize="@dimen/sizeText"
+            android:textStyle="bold"
+            android:background="@drawable/rectangle_rounded_white"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginXL"
+        android:layout_marginEnd="@dimen/marginXL">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/password"
+        android:gravity="center_vertical"
+        android:inputType="text"
+        android:lineSpacingExtra="@dimen/marginXS"
+        android:padding="@dimen/marginM"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:textColor="@color/colorGrey"
+        android:textColorHint="@color/colorGrey"
+        android:textColorLink="@color/colorGrey"
+        android:textSize="@dimen/sizeText"
+        android:textStyle="bold"
+        android:background="@drawable/rectangle_rounded_white"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/marginL">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/remember"
+            android:textSize="@dimen/sizeTextS"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/forgot_password"
+            android:textSize="@dimen/sizeTextS"
+            android:layout_marginStart="@dimen/marginXL"
+            android:textColor="@color/design_default_color_on_secondary"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:text="@string/sing_in"
+        android:layout_gravity="center"
+        android:textSize="@dimen/sizeTextL"
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/rectangle_rounded_black"
+        android:layout_margin="@dimen/marginXXL" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|bottom"
+        android:text="@string/just_sing_in"
+        android:textColor="@color/colorGrey"
+        android:textSize="@dimen/sizeTextS" />
+
+</LinearLayout>

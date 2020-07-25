@@ -2,9 +2,12 @@
 <resources>
     <dimen name="sizeImage">40dp</dimen>
     <dimen name="sizeText">25sp</dimen>
+    <dimen name="sizeTextL">36sp</dimen>
+    <dimen name="sizeTextS">20sp</dimen>
     <dimen name="marginM">15dp</dimen>
     <dimen name="marginS">7dp</dimen>
     <dimen name="marginXS">5dp</dimen>
     <dimen name="marginXL">50dp</dimen>
     <dimen name="marginL">30dp</dimen>
+    <dimen name="marginXXL">140dp</dimen>
 </resources>

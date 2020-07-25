@@ -7,4 +7,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+<!--    <style name="Task3" parent="Theme.AppCompat.Light.DarkActionBar">-->
+<!--        <item name="android:textSize">@dimen/sizeText</item>-->
+<!--        <item name="android:fontFamily"-->
+<!--    </style>-->
+
 </resources>
