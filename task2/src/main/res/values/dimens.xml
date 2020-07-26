@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="sizeImage">40dp</dimen>
+    <dimen name="sizeImageS">50dp</dimen>
+    <dimen name="sizeImageM">100dp</dimen>
+    <dimen name="sizeImageL">120dp</dimen>
+
     <dimen name="sizeText">25sp</dimen>
     <dimen name="sizeTextL">36sp</dimen>
     <dimen name="sizeTextS">20sp</dimen>
+    <dimen name="sizeTextXS">16sp</dimen>
+
     <dimen name="marginM">15dp</dimen>
     <dimen name="marginS">7dp</dimen>
     <dimen name="marginXS">5dp</dimen>
