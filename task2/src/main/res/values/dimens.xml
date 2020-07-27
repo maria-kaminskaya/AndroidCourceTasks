@@ -4,6 +4,7 @@
     <dimen name="sizeImageS">50dp</dimen>
     <dimen name="sizeImageM">100dp</dimen>
     <dimen name="sizeImageL">120dp</dimen>
+    <dimen name="sizeImageXXL">250dp</dimen>
 
     <dimen name="sizeText">25sp</dimen>
     <dimen name="sizeTextL">36sp</dimen>
