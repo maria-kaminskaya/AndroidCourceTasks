@@ -24,7 +24,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Android course"
+        android:text="@string/android_course"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
         android:textSize="@dimen/sizeText"
@@ -78,15 +78,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/marginM"
-                android:text="Certificated"
+                android:text="@string/certificated"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/sizeText"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayoutPhoto"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout2"
+                android:id="@+id/constraintLayoutPhoto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorWhite"
@@ -139,7 +139,7 @@
         android:layout_margin="@dimen/marginS"
         app:cardCornerRadius="@dimen/marginS"
         app:cardElevation="@dimen/marginXS"
-        app:layout_constraintEnd_toStartOf="@+id/materialCardView"
+        app:layout_constraintEnd_toStartOf="@+id/materialCardViewViews"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialCardViewPhoto">
@@ -163,15 +163,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/marginM"
-                android:text="Layouts"
+                android:text="@string/layouts"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/sizeText"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayoutLayouts"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@id/constraintLayout2"
+                android:id="@+id/constraintLayoutLayouts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorWhite"
@@ -218,7 +218,7 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView"
+        android:id="@+id/materialCardViewViews"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/marginS"
@@ -251,15 +251,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/marginM"
-                android:text="Views"
+                android:text="@string/views"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/sizeText"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayoutViews"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@id/constraintLayout2"
+                android:id="@+id/constraintLayoutViews"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorWhite"
