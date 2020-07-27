@@ -4,12 +4,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/margin">
+    android:padding="@dimen/marginM">
 
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin">
+        android:layout_margin="@dimen/marginM">
         <ImageView
             android:layout_width="@dimen/sizeImage"
             android:layout_height="@dimen/sizeImage"
@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin3"
+            android:layout_marginStart="@dimen/marginXL"
             android:fontFamily="sans-serif"
             android:text="@string/attractions"
             android:textSize="@dimen/sizeText"
@@ -27,7 +27,7 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin">
+        android:layout_margin="@dimen/marginM">
         <ImageView
             android:layout_width="@dimen/sizeImage"
             android:layout_height="@dimen/sizeImage"
@@ -36,7 +36,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin3"
+            android:layout_marginStart="@dimen/marginXL"
             android:fontFamily="sans-serif"
             android:text="@string/dining"
             android:textSize="@dimen/sizeText"
@@ -45,7 +45,7 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin">
+        android:layout_margin="@dimen/marginM">
         <ImageView
             android:layout_width="@dimen/sizeImage"
             android:layout_height="@dimen/sizeImage"
@@ -54,7 +54,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin3"
+            android:layout_marginStart="@dimen/marginXL"
             android:fontFamily="sans-serif"
             android:text="@string/education"
             android:textSize="@dimen/sizeText"
@@ -63,7 +63,7 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin">
+        android:layout_margin="@dimen/marginM">
         <ImageView
             android:layout_width="@dimen/sizeImage"
             android:layout_height="@dimen/sizeImage"
@@ -72,7 +72,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin3"
+            android:layout_marginStart="@dimen/marginXL"
             android:fontFamily="sans-serif"
             android:text="@string/family"
             android:textSize="@dimen/sizeText"
@@ -81,7 +81,7 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin">
+        android:layout_margin="@dimen/marginM">
         <ImageView
             android:layout_width="@dimen/sizeImage"
             android:layout_height="@dimen/sizeImage"
@@ -90,7 +90,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin3"
+            android:layout_marginStart="@dimen/marginXL"
             android:fontFamily="sans-serif"
             android:text="@string/health"
             android:textSize="@dimen/sizeText"
@@ -99,7 +99,7 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin">
+        android:layout_margin="@dimen/marginM">
         <ImageView
             android:layout_width="@dimen/sizeImage"
             android:layout_height="@dimen/sizeImage"
@@ -108,7 +108,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin3"
+            android:layout_marginStart="@dimen/marginXL"
             android:fontFamily="sans-serif"
             android:text="@string/office"
             android:textSize="@dimen/sizeText"
@@ -117,7 +117,7 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin">
+        android:layout_margin="@dimen/marginM">
         <ImageView
             android:layout_width="@dimen/sizeImage"
             android:layout_height="@dimen/sizeImage"
@@ -126,7 +126,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin3"
+            android:layout_marginStart="@dimen/marginXL"
             android:fontFamily="sans-serif"
             android:text="@string/promotions"
             android:textSize="@dimen/sizeText"
@@ -135,7 +135,7 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin">
+        android:layout_margin="@dimen/marginM">
         <ImageView
             android:layout_width="@dimen/sizeImage"
             android:layout_height="@dimen/sizeImage"
@@ -144,7 +144,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin3"
+            android:layout_marginStart="@dimen/marginXL"
             android:fontFamily="sans-serif"
             android:text="@string/radio"
             android:textSize="@dimen/sizeText"
@@ -153,7 +153,7 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin">
+        android:layout_margin="@dimen/marginM">
         <ImageView
             android:layout_width="@dimen/sizeImage"
             android:layout_height="@dimen/sizeImage"
@@ -162,7 +162,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin3"
+            android:layout_marginStart="@dimen/marginXL"
             android:fontFamily="sans-serif"
             android:text="@string/recipes"
             android:textSize="@dimen/sizeText"
@@ -171,7 +171,7 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin">
+        android:layout_margin="@dimen/marginM">
         <ImageView
             android:layout_width="@dimen/sizeImage"
             android:layout_height="@dimen/sizeImage"
@@ -180,7 +180,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin3"
+            android:layout_marginStart="@dimen/marginXL"
             android:fontFamily="sans-serif"
             android:text="@string/sports"
             android:textSize="@dimen/sizeText"
