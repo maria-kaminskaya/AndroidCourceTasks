@@ -16,60 +16,50 @@
         android:textSize="@dimen/sizeTextL"
         android:textStyle="bold" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewSingIn"
-        android:layout_marginTop="@dimen/marginM"
-        android:layout_marginStart="@dimen/marginXL"
-        android:layout_marginEnd="@dimen/marginXL">
-
         <EditText
+            android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rectangle_rounded_white"
             android:gravity="center_vertical"
             android:hint="@string/email"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:lineSpacingExtra="@dimen/marginXS"
             android:padding="@dimen/marginM"
             android:selectAllOnFocus="true"
             android:singleLine="true"
             android:textColorHint="@color/colorGrey"
             android:textSize="@dimen/sizeText"
-            android:textStyle="bold" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginXL"
-        android:layout_marginEnd="@dimen/marginXL"
-        android:layout_below="@+id/textInputLayoutEmail">
+            android:textStyle="bold"
+            android:layout_below="@+id/textViewSingIn"
+            android:layout_marginTop="@dimen/marginL"
+            android:layout_marginStart="@dimen/marginXL"
+            android:layout_marginEnd="@dimen/marginXL" />
 
         <EditText
+            android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rectangle_rounded_white"
             android:gravity="center_vertical"
             android:hint="@string/password"
-            android:inputType="text"
+            android:inputType="numberPassword"
             android:lineSpacingExtra="@dimen/marginXS"
             android:padding="@dimen/marginM"
             android:selectAllOnFocus="true"
             android:textColorHint="@color/colorGrey"
             android:textSize="@dimen/sizeText"
-            android:textStyle="bold" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/marginXL"
+            android:layout_marginEnd="@dimen/marginXL"
+            android:layout_marginTop="@dimen/marginM"
+            android:layout_below="@+id/editTextEmail"/>
 
     <CheckBox
         android:id="@+id/checkBoxRemember"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textInputLayoutPassword"
+        android:layout_below="@+id/editTextPassword"
         android:layout_margin="@dimen/marginL"
         android:text="@string/remember"
         android:textSize="@dimen/sizeTextS" />
@@ -78,7 +68,7 @@
         android:id="@+id/textViewForgot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textInputLayoutPassword"
+        android:layout_below="@+id/editTextPassword"
         android:layout_margin="@dimen/marginL"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="@dimen/marginXL"
@@ -90,7 +80,7 @@
         android:id="@+id/buttonSingIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textInputLayoutPassword"
+        android:layout_below="@+id/editTextPassword"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="@dimen/marginXXL"

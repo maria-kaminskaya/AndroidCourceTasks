@@ -17,15 +17,12 @@
         android:layout_marginTop="@dimen/marginXL"
         android:layout_marginBottom="@dimen/marginM"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginXL"
-        android:layout_marginEnd="@dimen/marginXL">
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginXL"
+            android:layout_marginEnd="@dimen/marginXL"
+            android:layout_marginTop="@dimen/marginL"
             android:hint="@string/email"
             android:gravity="center_vertical"
             android:inputType="text"
@@ -38,17 +35,12 @@
             android:textStyle="bold"
             android:background="@drawable/rectangle_rounded_white"/>
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginXL"
-        android:layout_marginEnd="@dimen/marginXL">
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginXL"
+        android:layout_marginEnd="@dimen/marginXL"
+        android:layout_marginTop="@dimen/marginM"
         android:hint="@string/password"
         android:gravity="center_vertical"
         android:inputType="text"
@@ -60,7 +52,6 @@
         android:textSize="@dimen/sizeText"
         android:textStyle="bold"
         android:background="@drawable/rectangle_rounded_white"/>
-    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

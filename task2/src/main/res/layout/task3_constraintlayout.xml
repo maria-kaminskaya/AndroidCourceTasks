@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <TextView
         android:id="@+id/textViewSingIn"
         android:layout_width="match_parent"
@@ -21,50 +20,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginXL"
-        android:layout_marginTop="@dimen/marginM"
-        android:layout_marginEnd="@dimen/marginXL"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSingIn">
-
         <EditText
+            android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rectangle_rounded_white"
             android:hint="@string/email"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:lineSpacingExtra="@dimen/marginXS"
             android:padding="@dimen/marginM"
             android:selectAllOnFocus="true"
             android:singleLine="true"
             android:textColorHint="@color/colorGrey"
             android:textSize="@dimen/sizeText"
-            android:textStyle="bold" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginXL"
-        android:layout_marginEnd="@dimen/marginXL"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmail">
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/marginXL"
+            android:layout_marginTop="@dimen/marginL"
+            android:layout_marginEnd="@dimen/marginXL"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSingIn"/>
 
         <EditText
+            android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginM"
+            android:layout_marginStart="@dimen/marginXL"
+            android:layout_marginEnd="@dimen/marginXL"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
             android:background="@drawable/rectangle_rounded_white"
             android:gravity="center_vertical"
             android:hint="@string/password"
-            android:inputType="text"
+            android:inputType="numberPassword"
             android:lineSpacingExtra="@dimen/marginXS"
             android:padding="@dimen/marginM"
             android:selectAllOnFocus="true"
@@ -72,7 +62,6 @@
             android:textColorHint="@color/colorGrey"
             android:textSize="@dimen/sizeText"
             android:textStyle="bold" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
         android:id="@+id/checkBoxRemember"
@@ -85,7 +74,7 @@
         app:layout_constraintEnd_toStartOf="@+id/textViewForgot"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
     <TextView
         android:id="@+id/textViewForgot"
@@ -99,7 +88,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/checkBoxRemember"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
     <Button
         android:id="@+id/buttonSingIn"
@@ -116,7 +105,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
     <TextView
         android:layout_width="match_parent"
