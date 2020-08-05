@@ -1,5 +1,6 @@
 package com.kmnvxh222.task3;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class ContactsRecyclerAdapter extends RecyclerView.Adapter<ContactsRecyclerAdapter.ContactsViewHolder> {
 
     private List<Contacts> contacts;
+    static OnItemClickListener mItemClickListener;
 
     public ContactsRecyclerAdapter(@NonNull List<Contacts> contacts){
         this.contacts = contacts;
@@ -41,7 +43,7 @@ public class ContactsRecyclerAdapter extends RecyclerView.Adapter<ContactsRecycl
         notifyItemChanged(contacts.indexOf(new_contact));
     }
 
-    static class ContactsViewHolder extends RecyclerView.ViewHolder{
+ static class ContactsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private TextView textName;
         private TextView textInfo;
@@ -52,26 +54,16 @@ public class ContactsRecyclerAdapter extends RecyclerView.Adapter<ContactsRecycl
             textName = itemView.findViewById (R.id.textViewName);
             textInfo = itemView.findViewById (R.id.textViewInfo);
             image = itemView.findViewById (R.id.imageView);
+            itemView.setOnClickListener(this);
         }
-
+        @Override
+        public void onClick(View v) {
+            if (mItemClickListener != null) {
+                mItemClickListener.onItemClick(v, getAdapterPosition());
+            }
+        }
         public void bind(Contacts contacts){
             int id = 0;
-//            String str = "No contacts.Please add";
-//       Collection<String> contact = contacts.values();
-////       contacts.forEach((v)-> v.indexOf ("@"));
-//            for(Map.Entry<String,String> entry: contacts.entrySet()){
-//                if(entry.getValue().contains("@"))
-//                {
-//                    id = R.drawable.contact_mail;
-//                }
-//                else if (!entry.getValue().contains("@"))
-//                {
-//                    id = R.drawable.contact_phone;
-//                }
-//            }
-//            if(contacts == null){
-//                itemsNull.setText(str);
-//            }else{
             try{
                 Log.d("ContactsRecyclerAdapter", "Contacts" + contacts);
                 textName.setText(contacts.getName());
@@ -89,5 +81,13 @@ public class ContactsRecyclerAdapter extends RecyclerView.Adapter<ContactsRecycl
 
 //            }
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(View view , int position);
+    }
+
+    public void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
+        this.mItemClickListener = mItemClickListener;
     }
 }

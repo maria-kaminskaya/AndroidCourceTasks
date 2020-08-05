@@ -34,15 +34,18 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(TAG,"onCreate: Contacts" + contacts);
 
-
-//        if(contacts.isEmpty()){
-//            itemsNull.setText(R.string.no_contacts);
-//        }
-////        else{
         adapter = new ContactsRecyclerAdapter(contacts);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager (this, RecyclerView.VERTICAL, false));
-//        }
+
+        adapter.setOnItemClickListener(new ContactsRecyclerAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(MainActivity.this, EditContactActivity.class);
+                intent.putExtra("EDIT_CONTACT",contacts.get(position));
+                startActivity(intent);
+            }
+        });
 
         button = findViewById(R.id.floatingActionButton);
         button.setOnClickListener(new View.OnClickListener () {
@@ -53,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         getData();
+        if(contacts.isEmpty()){
+            itemsNull.setText(R.string.no_contacts);
+        }
     }
 
     private void getData(){
@@ -69,11 +75,9 @@ public class MainActivity extends AppCompatActivity {
 }
 
 // и редактирования
-//Повесить слушатель на элементы ресуслера
 //Сделать активити с редактированием
 //Завести поиск
 //Сделать ту штуку на сотку
-//не сетается текст в текствью прпи нулевом списке*
 
 //  По второй домашке
 //Добавить стили
