@@ -101,16 +101,8 @@ public class AddContactActivity extends AppCompatActivity {
             intent.putExtra("NEW_CONTACT", (Serializable) contact);
             startActivity(intent);
         }
-//        else{
-//            Toast.makeText(context,"NULL OBJECT", )
-//        }
-
-
     }
 }
 
-
-//получить данные из чекбокса*
-//нотифай в ресуслер
 
 //и стрелка в тулбаре

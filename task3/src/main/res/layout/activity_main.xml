@@ -10,9 +10,8 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:minHeight="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorToolbar"
         android:theme="?attr/actionBarTheme"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +24,7 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:background="@color/cardview_light_background">
+            android:background="@color/colorWhite">
 
             <ImageView
                 android:layout_width="wrap_content"

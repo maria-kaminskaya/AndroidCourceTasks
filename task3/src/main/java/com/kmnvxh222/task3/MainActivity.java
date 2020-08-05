@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(MainActivity.this, EditContactActivity.class);
                 intent.putExtra("EDIT_CONTACT",contacts.get(position));
+                intent.putExtra("POSITION",position);
                 startActivity(intent);
             }
         });
@@ -55,7 +56,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         getData();
+        editData();
         if(contacts.isEmpty()){
             itemsNull.setText(R.string.no_contacts);
         }
@@ -71,13 +74,28 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG,"getData: Contacts " + contacts.get(i));
         }
     }
+    private void editData(){
+        Contacts edit_contact = (Contacts)getIntent().getSerializableExtra("EDITED_CONTACT");
+        Integer position = (Integer)getIntent().getSerializableExtra("POSITION");
+        if(edit_contact!=null && position!=null){//?
+            contacts.set(position,edit_contact);
+            adapter.notifyDataSetChanged();
+        }
+        for(int i = 0; i<contacts.size();i++){
+            Log.d(TAG,"editData: Contacts " + contacts.get(i));
+        }
+    }
 
 }
 
 // и редактирования
-//Сделать активити с редактированием
 //Завести поиск
 //Сделать ту штуку на сотку
 
 //  По второй домашке
 //Добавить стили
+
+//Разметка
+//Стрелочка в тулбаре
+//Фон в майн в тулбаре перекрывает хинт
+//кнопка в едит
