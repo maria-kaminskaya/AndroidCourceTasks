@@ -1,6 +1,5 @@
 package com.kmnvxh222.task3;
 
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
