@@ -12,11 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorToolbar"
-        android:theme="?attr/actionBarTheme"
-        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <LinearLayout
             android:id="@+id/search_container"
@@ -24,28 +23,30 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:background="@color/colorWhite">
+            android:layout_margin="7dp"
+            android:background="@drawable/rectangle_rounded_white">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/search"/>
+                android:src="@drawable/search"
+                android:layout_margin="10dp"/>
 
             <EditText
                 android:id="@+id/search_view"
                 android:layout_width="0dp"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:gravity="center_vertical"
                 android:hint="@string/search"
                 android:textColorLink="@color/colorPrimary"
-                android:imeOptions="actionSearch"
                 android:inputType="text"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:textColor="#ffffff"
-                android:textColorHint="#b3ffffff" />
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorHint" />
         </LinearLayout>
 
     </androidx.appcompat.widget.Toolbar>
@@ -54,6 +55,7 @@
         android:id="@+id/itemsNull"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

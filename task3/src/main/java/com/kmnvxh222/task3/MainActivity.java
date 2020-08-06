@@ -96,6 +96,4 @@ public class MainActivity extends AppCompatActivity {
 //Добавить стили
 
 //Разметка
-//Стрелочка в тулбаре
-//Фон в майн в тулбаре перекрывает хинт
 //кнопка в едит

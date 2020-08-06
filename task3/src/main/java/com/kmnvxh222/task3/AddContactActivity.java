@@ -2,15 +2,11 @@ package com.kmnvxh222.task3;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 import java.io.Serializable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,12 +38,14 @@ public class AddContactActivity extends AppCompatActivity {
         editTextInfo = findViewById(R.id.editTextInfo);
         toolbar = findViewById(R.id.toolbar);
 
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveContact(contact);
             }
         });
+
     }
 
         View.OnClickListener radioButtonClickListener = new View.OnClickListener() {
@@ -65,10 +63,6 @@ public class AddContactActivity extends AppCompatActivity {
                 Log.d(TAG, "radioButtonClickListener: typeInfo " + typeInfo);
             }
         };
-
-
-
-
 
     private void getData(String typeInfo){
 
@@ -103,6 +97,3 @@ public class AddContactActivity extends AppCompatActivity {
         }
     }
 }
-
-
-//и стрелка в тулбаре

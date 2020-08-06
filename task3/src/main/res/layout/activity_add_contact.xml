@@ -11,12 +11,13 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorToolbar"
-            android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="?attr/homeAsUpIndicator"
-            android:gravity="center_vertical"/>
+            app:title="Add contact"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        />
 
 
     <RadioGroup
@@ -32,14 +33,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:text="Phone number"
+            android:text="@string/phone_number"
             android:focusable="true" />
 
         <RadioButton
             android:id="@+id/radioButtonEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email"
+            android:text="@string/email"
             android:clickable="true"
             android:focusable="true"/>
     </RadioGroup>
@@ -49,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:hint="Name"
+        android:hint="@string/name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
