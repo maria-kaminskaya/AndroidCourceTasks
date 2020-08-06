@@ -7,4 +7,5 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorText">#000000</color>
     <color name="colorHint">#8C8B8B</color>
+    <color name="colorButton">#FF2525</color>
 </resources>

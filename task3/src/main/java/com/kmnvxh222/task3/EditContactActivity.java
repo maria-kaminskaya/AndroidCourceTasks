@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.io.Serializable;
@@ -22,6 +23,7 @@ public class EditContactActivity extends AppCompatActivity {
     private EditText editTextName;
     private EditText editTextInfo;
     private Contacts edit_contact;
+    private Button buttonRemove;
     private Toolbar toolbar;
 
     @Override
@@ -31,16 +33,18 @@ public class EditContactActivity extends AppCompatActivity {
 
         editTextName = findViewById(R.id.editTextName_e);
         editTextInfo = findViewById(R.id.editTextInfo_e);
-
+        buttonRemove = findViewById(R.id.removeButton);
         toolbar = findViewById(R.id.toolbar_e);
 
-        getData();
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveEditData(edit_contact);
             }
         });
+
+        getData();
+        removeData();
 
     }
 
@@ -112,11 +116,25 @@ public class EditContactActivity extends AppCompatActivity {
         if(edit_contact!=null){
             Log.d(TAG, "saveContact " + edit_contact.getName()+" "+edit_contact.getEmail()+" "+ edit_contact.getPhone());
             Intent intent = new Intent(EditContactActivity.this, MainActivity.class);
-            intent.putExtra("EDITED_CONTACT", (Serializable) edit_contact);
+            intent.putExtra("EDITED_CONTACT", edit_contact);
             intent.putExtra("POSITION", position);
             startActivity(intent);
         }
     }
+
+
+    private void removeData(){
+        buttonRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick");
+                position = (int)getIntent().getSerializableExtra("POSITION");
+                Log.d(TAG, "onClick " + position);
+                Intent intent = new Intent(EditContactActivity.this, MainActivity.class);
+                intent.putExtra("REMOVE_CONTACT", position);
+                startActivity(intent);
+            }
+        });
+    }
 }
 
-//Удаление данных (будем нулевой объект отправлять в маин)

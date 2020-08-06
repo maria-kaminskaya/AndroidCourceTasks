@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
         getData();
         editData();
+        removeContact();
         if(contacts.isEmpty()){
             itemsNull.setText(R.string.no_contacts);
         }
@@ -122,7 +123,14 @@ public class MainActivity extends AppCompatActivity {
         }
         adapter.updateList(temp);
     }
+
+    private void removeContact(){
+        Integer position = (Integer)getIntent().getSerializableExtra("REMOVE_CONTACT");
+        if(position!=null){
+            contacts.remove((int)position);
+            adapter.notifyDataSetChanged();
+        }
+    }
 }
 
-//Завести поиск
 //Сделать ту штуку на сотку
