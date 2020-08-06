@@ -120,4 +120,3 @@ public class EditContactActivity extends AppCompatActivity {
 }
 
 //Удаление данных (будем нулевой объект отправлять в маин)
-//Тулбар завести

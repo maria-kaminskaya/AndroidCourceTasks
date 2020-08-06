@@ -82,6 +82,11 @@ public class ContactsRecyclerAdapter extends RecyclerView.Adapter<ContactsRecycl
         }
     }
 
+    public void updateList(List<Contacts> search_contact){
+        contacts = search_contact;
+        notifyDataSetChanged();
+    }
+
     public interface OnItemClickListener {
         void onItemClick(View view , int position);
     }

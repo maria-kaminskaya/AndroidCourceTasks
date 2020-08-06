@@ -5,11 +5,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton button;
     private ContactsRecyclerAdapter adapter;
     private TextView itemsNull;
+    private EditText searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         itemsNull = findViewById(R.id.itemsNull);
+        searchView = findViewById(R.id.searchView);
+        searchListener();
 
         Log.d(TAG,"onCreate: Contacts" + contacts);
 
@@ -86,14 +94,35 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void searchListener(){
+        searchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                search(s.toString());
+            }
+        });
+    }
+
+    void search(String text){
+        List<Contacts> temp = new ArrayList<>();
+        for(Contacts c: contacts){
+            if(c.getName().contains(text)){
+                temp.add(c);
+            }
+        }
+        adapter.updateList(temp);
+    }
 }
 
-// и редактирования
 //Завести поиск
 //Сделать ту штуку на сотку
-
-//  По второй домашке
-//Добавить стили
-
-//Разметка
-//кнопка в едит
