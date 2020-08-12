@@ -1,5 +1,6 @@
 package com.kmnvxh222.task3;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -118,7 +119,8 @@ public class EditContactActivity extends AppCompatActivity {
             Intent intent = new Intent(EditContactActivity.this, MainActivity.class);
             intent.putExtra("EDITED_CONTACT", edit_contact);
             intent.putExtra("POSITION", position);
-            startActivity(intent);
+            setResult(Activity.RESULT_OK, intent);
+            finish();
         }
     }
 
@@ -132,7 +134,8 @@ public class EditContactActivity extends AppCompatActivity {
                 Log.d(TAG, "onClick " + position);
                 Intent intent = new Intent(EditContactActivity.this, MainActivity.class);
                 intent.putExtra("REMOVE_CONTACT", position);
-                startActivity(intent);
+                setResult(Activity.RESULT_OK,intent);
+                finish();
             }
         });
     }

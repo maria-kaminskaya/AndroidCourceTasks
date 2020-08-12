@@ -1,5 +1,6 @@
 package com.kmnvxh222.task3;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,11 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, EditContactActivity.class);
                 intent.putExtra("EDIT_CONTACT",contacts.get(position));
                 intent.putExtra("POSITION",position);
-                startActivity(intent);
+                startActivityForResult(intent,1000);
             }
         });
 
@@ -61,20 +58,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddContactActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 2000);
             }
         });
 
-        getData();
-        editData();
-        removeContact();
-        if(contacts.isEmpty()){
+//        if(contacts.isEmpty()){
             itemsNull.setText(R.string.no_contacts);
-        }
+//        }
     }
 
-    private void getData(){
-        Contacts new_contact = (Contacts)getIntent().getSerializableExtra("NEW_CONTACT");
+    //onActivityResult
+    private void getData(@Nullable Intent data){
+        Contacts new_contact = (Contacts)data.getSerializableExtra("NEW_CONTACT");
         if(new_contact!=null){
             contacts.add(new_contact);
             adapter.notifyDataSetChanged();
@@ -82,10 +77,14 @@ public class MainActivity extends AppCompatActivity {
         for(int i = 0; i<contacts.size();i++){
             Log.d(TAG,"getData: Contacts " + contacts.get(i));
         }
+
     }
-    private void editData(){
-        Contacts edit_contact = (Contacts)getIntent().getSerializableExtra("EDITED_CONTACT");
-        Integer position = (Integer)getIntent().getSerializableExtra("POSITION");
+
+    //onActivityResult
+    private void editData(@Nullable Intent data){
+        Contacts edit_contact = (Contacts)data.getSerializableExtra("EDITED_CONTACT");
+        Integer position = (Integer)data.getSerializableExtra("POSITION");
+
         if(edit_contact!=null && position!=null){//?
             contacts.set(position,edit_contact);
             adapter.notifyDataSetChanged();
@@ -124,13 +123,30 @@ public class MainActivity extends AppCompatActivity {
         adapter.updateList(temp);
     }
 
-    private void removeContact(){
-        Integer position = (Integer)getIntent().getSerializableExtra("REMOVE_CONTACT");
+    //onActivityResult
+    private void removeContact(@Nullable Intent data){
+        Integer position = (Integer)data.getSerializableExtra("REMOVE_CONTACT");
         if(position!=null){
             contacts.remove((int)position);
             adapter.notifyDataSetChanged();
         }
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(data!=null){
+            if (requestCode == 1000){
+                removeContact(data);
+                editData(data);
+            }else if(requestCode == 2000){
+                getData(data);
+                itemsNull.setText("");
+            }
+        }
+
+
+    }
 }
 
-//Сделать ту штуку на сотку

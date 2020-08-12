@@ -1,5 +1,6 @@
 package com.kmnvxh222.task3;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,8 +38,7 @@ public class AddContactActivity extends AppCompatActivity {
         editTextName = findViewById(R.id.editTextName);
         editTextInfo = findViewById(R.id.editTextInfo);
         toolbar = findViewById(R.id.toolbar);
-
-
+        
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,13 +87,13 @@ public class AddContactActivity extends AppCompatActivity {
         contact = new Contacts(name,email,phone);
     }
 
-    //Повесить его в тулбар на галочку
     private void saveContact(Contacts contact){
         if(contact!=null){
             Log.d(TAG, "saveContact " + contact.getName()+" "+contact.getEmail()+" "+ contact.getPhone());
             Intent intent = new Intent(AddContactActivity.this, MainActivity.class);
             intent.putExtra("NEW_CONTACT", (Serializable) contact);
-            startActivity(intent);
+            setResult(Activity.RESULT_OK,intent);
+            finish();
         }
     }
 }
