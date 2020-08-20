@@ -28,83 +28,54 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageViewPhoto"
         app:layout_constraintEnd_toEndOf="@+id/imageViewPhoto" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/marginL"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewPhoto">
-
         <EditText
+            android:id="@+id/textInputLayoutTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:hint="@string/title"
             android:inputType="text"
-            android:lineSpacingExtra="@dimen/marginXS"
-            android:selectAllOnFocus="true"
-            android:singleLine="true"
             android:textColor="@color/colorGrey"
             android:textColorHint="@color/colorGrey"
-            android:textColorLink="@color/colorGrey"
-            android:textSize="@dimen/sizeText" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutPrice"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/marginL"
-        app:layout_constraintEnd_toStartOf="@+id/textInputLayoutLocation"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTitle">
+            android:textSize="@dimen/sizeText"
+            android:layout_margin="@dimen/marginL"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewPhoto"/>
 
         <EditText
-            android:layout_width="match_parent"
+            android:id="@+id/textInputLayoutPrice"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/marginL"
+            app:layout_constraintEnd_toStartOf="@+id/textInputLayoutLocation"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTitle"
             android:gravity="center_vertical"
             android:hint="@string/price"
             android:inputType="text"
-            android:lineSpacingExtra="@dimen/marginXS"
-            android:selectAllOnFocus="true"
-            android:singleLine="true"
             android:textColor="@color/colorGrey"
             android:textColorHint="@color/colorGrey"
-            android:textColorLink="@color/colorGrey"
             android:textSize="@dimen/sizeText" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutLocation"
-        android:layout_width="169dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginL"
-        android:layout_marginTop="@dimen/marginL"
-        android:layout_marginBottom="@dimen/marginL"
-        app:layout_constraintEnd_toStartOf="@+id/imageViewLocation"
-        app:layout_constraintHorizontal_bias="0.7"
-        app:layout_constraintStart_toEndOf="@+id/textInputLayoutPrice"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTitle">
 
         <EditText
-            android:layout_width="match_parent"
+            android:id="@+id/textInputLayoutLocation"
+            android:layout_width="169dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginL"
+            android:layout_marginTop="@dimen/marginL"
+            android:layout_marginBottom="@dimen/marginL"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewLocation"
+            app:layout_constraintHorizontal_bias="0.7"
+            app:layout_constraintStart_toEndOf="@+id/textInputLayoutPrice"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTitle"
             android:gravity="center_vertical"
             android:hint="@string/location"
             android:inputType="text"
-            android:lineSpacingExtra="@dimen/marginXS"
-            android:selectAllOnFocus="true"
-            android:singleLine="true"
             android:textColor="@color/colorGrey"
             android:textColorHint="@color/colorGrey"
-            android:textColorLink="@color/colorGrey"
             android:textSize="@dimen/sizeText" />
-
-    </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
         android:id="@+id/imageViewLocation"
@@ -120,80 +91,51 @@
         app:layout_constraintStart_toEndOf="@+id/textInputLayoutLocation"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTitle" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/marginL"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutLocation">
-
         <EditText
+            android:id="@+id/textInputLayoutDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/marginL"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutLocation"
             android:gravity="center_vertical"
             android:hint="@string/description"
             android:inputType="text"
-            android:lineSpacingExtra="@dimen/marginXS"
-            android:selectAllOnFocus="true"
-            android:singleLine="true"
             android:textColor="@color/colorGrey"
             android:textColorHint="@color/colorGrey"
-            android:textColorLink="@color/colorGrey"
             android:textSize="@dimen/sizeText" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutInventory"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/marginL"
-        app:layout_constraintEnd_toStartOf="@+id/textInputLayoutWeight"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDescription">
-
-        <EditText
-            android:layout_width="match_parent"
+         <EditText
+            android:id="@+id/textInputLayoutInventory"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/marginL"
+            app:layout_constraintEnd_toStartOf="@+id/textInputLayoutWeight"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDescription"
             android:gravity="center_vertical"
             android:hint="@string/inventory"
             android:inputType="text"
-            android:lineSpacingExtra="@dimen/marginXS"
-            android:selectAllOnFocus="true"
-            android:singleLine="true"
             android:textColor="@color/colorGrey"
             android:textColorHint="@color/colorGrey"
-            android:textColorLink="@color/colorGrey"
             android:textSize="@dimen/sizeText" />
-    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutWeight"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/marginL"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textInputLayoutInventory"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDescription">
-
-        <EditText
-            android:layout_width="match_parent"
+         <EditText
+            android:id="@+id/textInputLayoutWeight"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/marginL"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textInputLayoutInventory"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDescription"
             android:gravity="center_vertical"
             android:hint="@string/weight"
             android:inputType="text"
-            android:lineSpacingExtra="@dimen/marginXS"
-            android:selectAllOnFocus="true"
-            android:singleLine="true"
             android:textColor="@color/colorGrey"
             android:textColorHint="@color/colorGrey"
-            android:textColorLink="@color/colorGrey"
             android:textSize="@dimen/sizeText" />
-
-    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
