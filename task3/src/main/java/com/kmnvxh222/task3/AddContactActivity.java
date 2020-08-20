@@ -7,8 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import java.io.Serializable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +15,6 @@ public class AddContactActivity extends AppCompatActivity {
     private String TAG = "AddContactActivity";
 
     private String typeInfo;
-    private RadioGroup radioGroup;
     private RadioButton  radioButtonPhone;
     private RadioButton radioButtonEmail;
     private EditText editTextName;
@@ -30,7 +27,6 @@ public class AddContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_contact);
 
-        radioGroup = findViewById(R.id.radioGroup);
         radioButtonPhone = findViewById(R.id.radioButtonPhone);
         radioButtonEmail = findViewById(R.id.radioButtonEmail);
         radioButtonPhone.setOnClickListener(radioButtonClickListener);
@@ -48,19 +44,18 @@ public class AddContactActivity extends AppCompatActivity {
 
     }
 
-        View.OnClickListener radioButtonClickListener = new View.OnClickListener() {
+    private View.OnClickListener radioButtonClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 RadioButton radioButton = (RadioButton) v;
                 switch(radioButton.getId()){
-                    case R.id.radioButtonPhone: typeInfo = "phone";
+                    case R.id.radioButtonPhone: typeInfo = enumTypeInfo.phone.toString();
                         break;
-                    case R.id.radioButtonEmail: typeInfo = "email";
+                    case R.id.radioButtonEmail: typeInfo = enumTypeInfo.email.toString();
                         break;
                     default: break;
                 }
                 getData(typeInfo);
-                Log.d(TAG, "radioButtonClickListener: typeInfo " + typeInfo);
             }
         };
 
@@ -68,30 +63,22 @@ public class AddContactActivity extends AppCompatActivity {
 
         String name = editTextName.getText().toString();
         String info = editTextInfo.getText().toString();
-        String phone = null;
-        String email = null;
+        String id = "0";
 
-        if(typeInfo.equals("phone")){
-            phone = info;
-            Log.d(TAG, "getData: typeInfo " + typeInfo);
-
-        }else if(typeInfo.equals("email")){
-            email = info;
-            Log.d(TAG, "getData: typeInfo " + typeInfo);
-
+        String symbols = "abcdefghijklmnopqrstuvwxyz";
+        StringBuilder randString = new StringBuilder();
+        int count = 5;
+        for(int i=0;i<count;i++) {
+           id = randString.append(symbols.charAt((int) (Math.random() * symbols.length()))).toString();
         }
-        Log.d(TAG, "getData: Name " + name);
-        Log.d(TAG, "getData: Phone " + phone);
-        Log.d(TAG, "getData: Email " + email);
 
-        contact = new Contacts(name,email,phone);
+        contact = new Contacts(id, name, typeInfo, info);
     }
 
     private void saveContact(Contacts contact){
         if(contact!=null){
-            Log.d(TAG, "saveContact " + contact.getName()+" "+contact.getEmail()+" "+ contact.getPhone());
-            Intent intent = new Intent(AddContactActivity.this, MainActivity.class);
-            intent.putExtra("NEW_CONTACT", (Serializable) contact);
+            Intent intent = new Intent();
+            intent.putExtra("NEW_CONTACT",  contact);
             setResult(Activity.RESULT_OK,intent);
             finish();
         }

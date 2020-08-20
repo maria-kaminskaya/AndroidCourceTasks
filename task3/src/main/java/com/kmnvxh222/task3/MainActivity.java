@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
         searchView = findViewById(R.id.searchView);
         searchListener();
 
-        Log.d(TAG,"onCreate: Contacts" + contacts);
-
         adapter = new ContactsRecyclerAdapter(contacts);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager (this, RecyclerView.VERTICAL, false));
@@ -48,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(MainActivity.this, EditContactActivity.class);
                 intent.putExtra("EDIT_CONTACT",contacts.get(position));
-                intent.putExtra("POSITION",position);
+                intent.putExtra("ID",contacts.get(position).getId());
                 startActivityForResult(intent,1000);
             }
         });
@@ -61,10 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 2000);
             }
         });
-
-//        if(contacts.isEmpty()){
             itemsNull.setText(R.string.no_contacts);
-//        }
     }
 
     //onActivityResult
@@ -74,23 +69,20 @@ public class MainActivity extends AppCompatActivity {
             contacts.add(new_contact);
             adapter.notifyDataSetChanged();
         }
-        for(int i = 0; i<contacts.size();i++){
-            Log.d(TAG,"getData: Contacts " + contacts.get(i));
-        }
-
     }
 
     //onActivityResult
     private void editData(@Nullable Intent data){
-        Contacts edit_contact = (Contacts)data.getSerializableExtra("EDITED_CONTACT");
-        Integer position = (Integer)data.getSerializableExtra("POSITION");
+        Contacts editContact = (Contacts)data.getSerializableExtra("EDITED_CONTACT");
+        String id = (String)data.getSerializableExtra("ID");
 
-        if(edit_contact!=null && position!=null){//?
-            contacts.set(position,edit_contact);
+        if(editContact!=null && id!=null){
+            for(int i = 0; i<contacts.size(); i++){
+                if(contacts.get(i).getId().equals(id)){
+                    contacts.set(i, editContact);
+                }
+            }
             adapter.notifyDataSetChanged();
-        }
-        for(int i = 0; i<contacts.size();i++){
-            Log.d(TAG,"editData: Contacts " + contacts.get(i));
         }
     }
 

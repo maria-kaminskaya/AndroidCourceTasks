@@ -1,16 +1,20 @@
 package com.kmnvxh222.task3;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 class Contacts implements Serializable {
+    private String id;
     private String name;
-    private String email;
-    private String phone;
+    private String typeInfo;
+    private String info;
 
-    Contacts(String name, String email, String phone) {
+
+    Contacts(String id, String name, String typeInfo, String info) {
+        this.id = id;
         this.name = name;
-        this.email = email;
-        this.phone = phone;
+        this.typeInfo = typeInfo;
+        this.info = info;
     }
 
     public String getName() {
@@ -21,19 +25,40 @@ class Contacts implements Serializable {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getInfo() {
+        return info;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setInfo(String info) {
+        this.info = info;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getTypeInfo() {
+        return typeInfo;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setTypeInfo(String typeInfo) {
+        this.typeInfo = typeInfo;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Contacts)) {
+            return false;
+        }
+        Contacts contact = (Contacts) o;
+        return  Objects.equals(name, contact.name) &&
+                Objects.equals(typeInfo, contact.typeInfo) &&
+                Objects.equals(info, contact.info);
+    }
+
 }

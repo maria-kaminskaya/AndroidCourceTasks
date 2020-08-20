@@ -9,9 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.io.Serializable;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -19,11 +16,10 @@ public class EditContactActivity extends AppCompatActivity {
 
     private String TAG = "EditContactActivity";
 
-    private int position;
-    private String typeInfo;
+    private String id;
     private EditText editTextName;
     private EditText editTextInfo;
-    private Contacts edit_contact;
+    private Contacts editСontact;
     private Button buttonRemove;
     private Toolbar toolbar;
 
@@ -40,7 +36,7 @@ public class EditContactActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveEditData(edit_contact);
+                saveEditData(editСontact);
             }
         });
 
@@ -50,23 +46,17 @@ public class EditContactActivity extends AppCompatActivity {
     }
 
     private void getData(){
-        edit_contact = (Contacts)getIntent().getSerializableExtra("EDIT_CONTACT");
-        position = (int)getIntent().getSerializableExtra("POSITION");
-       if(edit_contact != null){
-           editTextName.setText(edit_contact.getName());
-           if(edit_contact.getPhone()==null){
-               editTextInfo.setText(edit_contact.getEmail());
-               typeInfo = "email";
-           }else if(edit_contact.getEmail()==null){
-               editTextInfo.setText(edit_contact.getPhone());
-               typeInfo = "phone";
+        editСontact = (Contacts)getIntent().getSerializableExtra("EDIT_CONTACT");
+        id = (String)getIntent().getSerializableExtra("ID");
+       if(editСontact != null){
+           editTextName.setText(editСontact.getName());
+           editTextInfo.setText(editСontact.getInfo());
            }
-           editData(edit_contact, typeInfo);
+           editData(editСontact);
        }
 
-    }
 
-    private void editData(final Contacts edit_contact, final String typeInfo){
+    private void editData(final Contacts edit_contact){
 
         editTextName.addTextChangedListener(new TextWatcher() {
             @Override
@@ -79,7 +69,6 @@ public class EditContactActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                Log.d(TAG, "editData: LISTENER Name " + s);
                 edit_contact.setName(s.toString());
             }
         });
@@ -95,30 +84,16 @@ public class EditContactActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(typeInfo.equals("phone")){
-                    Log.d(TAG, "getData: typeInfo " + typeInfo);
-                    edit_contact.setPhone(s.toString());
-
-                }else if(typeInfo.equals("email")){
-                    Log.d(TAG, "getData: typeInfo " + typeInfo);
-                    edit_contact.setEmail(s.toString());
-
-                }
+                    edit_contact.setInfo(s.toString());
             }
         });
-
-        Log.d(TAG, "editData: Name " + edit_contact.getName());
-        Log.d(TAG, "editData: Phone " + edit_contact.getPhone());
-        Log.d(TAG, "editData: Email " + edit_contact.getEmail());
-
     }
 
-    private void saveEditData(Contacts edit_contact){
-        if(edit_contact!=null){
-            Log.d(TAG, "saveContact " + edit_contact.getName()+" "+edit_contact.getEmail()+" "+ edit_contact.getPhone());
+    private void saveEditData(Contacts editContact){
+        if(editContact!=null){
             Intent intent = new Intent(EditContactActivity.this, MainActivity.class);
-            intent.putExtra("EDITED_CONTACT", edit_contact);
-            intent.putExtra("POSITION", position);
+            intent.putExtra("EDITED_CONTACT", editContact);
+            intent.putExtra("ID", editContact.getId());
             setResult(Activity.RESULT_OK, intent);
             finish();
         }
@@ -129,11 +104,9 @@ public class EditContactActivity extends AppCompatActivity {
         buttonRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick");
-                position = (int)getIntent().getSerializableExtra("POSITION");
-                Log.d(TAG, "onClick " + position);
+                id = (String)getIntent().getSerializableExtra("ID");
                 Intent intent = new Intent(EditContactActivity.this, MainActivity.class);
-                intent.putExtra("REMOVE_CONTACT", position);
+                intent.putExtra("REMOVE_CONTACT", id);
                 setResult(Activity.RESULT_OK,intent);
                 finish();
             }

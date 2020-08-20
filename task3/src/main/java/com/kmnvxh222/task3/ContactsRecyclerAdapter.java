@@ -62,23 +62,21 @@ public class ContactsRecyclerAdapter extends RecyclerView.Adapter<ContactsRecycl
             }
         }
         public void bind(Contacts contacts){
-            int id = 0;
+            int idSrc = 0;
             try{
-                Log.d("ContactsRecyclerAdapter", "Contacts" + contacts);
                 textName.setText(contacts.getName());
-                if(contacts.getPhone()==null){
-                    textInfo.setText(contacts.getEmail());
-                    id = R.drawable.contact_mail;
-                }else if(contacts.getEmail()==null){
-                    textInfo.setText(contacts.getPhone());
-                    id = R.drawable.contact_phone;
+                if(contacts.getTypeInfo().equals(enumTypeInfo.email.toString())){
+                    textInfo.setText(contacts.getInfo());
+                    idSrc = R.drawable.contact_mail;
+                }else if(contacts.getTypeInfo().equals(enumTypeInfo.phone.toString())){
+                    textInfo.setText(contacts.getInfo());
+                idSrc = R.drawable.contact_phone;
                 }
-                image.setImageResource(id);
+                image.setImageResource(idSrc);
             }catch(Exception e){
                 Log.d("ContactsRecyclerAdapter", "" + e);
             }
 
-//            }
         }
     }
 
