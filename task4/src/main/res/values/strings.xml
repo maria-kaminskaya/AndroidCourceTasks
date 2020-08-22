@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">task4</string>
+    <string name="message_setting_text">true - Snackbar, false - Toast</string>
+    <string name="message_type">Message type</string>
+    <string name="hint">If true - Snackbar and if false - Toast</string>
+    <string name="pressed_coordinates_message">Pressed coordinates message</string>
 </resources>
