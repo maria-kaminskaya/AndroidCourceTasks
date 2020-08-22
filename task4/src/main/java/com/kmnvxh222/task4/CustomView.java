@@ -7,10 +7,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.Random;
 
@@ -31,8 +29,6 @@ public class CustomView extends View {
 
     private int radius = 0;
     private int radiusIn = 0;
-    private int color = 0;
-
     private int widthCenter = 0;
     private int heightCenter = 0;
 
@@ -59,13 +55,11 @@ public class CustomView extends View {
         getAttrs(attrs);
     }
 
-    //Attrs
     private void getAttrs(@Nullable AttributeSet attrs) {
-        if (attrs != null) {
+        if(attrs != null) {
             TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.CustomViewParams);
             radius = typedArray.getDimensionPixelSize(R.styleable.CustomViewParams_circle_radius, 0);
-            radiusIn = radius/3;
-            color = typedArray.getColor(R.styleable.CustomViewParams_circle_color, 0);
+            radiusIn = radius / 3;
             typedArray.recycle();
         }
     }
@@ -78,10 +72,6 @@ public class CustomView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        //AT_MOST, UNSPECIFIED, EXACTLY
-        int mode = MeasureSpec.getMode(widthMeasureSpec);
-        int size = MeasureSpec.getSize(widthMeasureSpec);
-        Log.d("CustomView", "onMeasure mode "+mode+", size "+size);
     }
 
     @Override
@@ -95,21 +85,20 @@ public class CustomView extends View {
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
         setColors();
-        Log.d("CustomView", "onLayout");
     }
 
-    private void setColors(){
+    private void setColors() {
         paint1.setColor(getResources().getColor(R.color.color1));
         paint2.setColor(getResources().getColor(R.color.color2));
         paint3.setColor(getResources().getColor(R.color.color3));
         paint4.setColor(getResources().getColor(R.color.color4));
         paint5.setColor(getResources().getColor(R.color.color5));
     }
-    //Draw
+
     @Override
     protected void onDraw(Canvas canvas) {
 
-        rect.set(widthCenter- radius, heightCenter - radius, widthCenter + radius, heightCenter + radius);
+        rect.set(widthCenter - radius, heightCenter - radius, widthCenter + radius, heightCenter + radius);
 
         paint1.setStyle(Paint.Style.FILL);
         paint2.setStyle(Paint.Style.FILL);
@@ -125,7 +114,6 @@ public class CustomView extends View {
         canvas.drawCircle(widthCenter, heightCenter, radiusIn, paint5);
 
         super.onDraw(canvas);
-        Log.d("CustomView", "onDraw");
     }
 
     private int randomColor() {
@@ -136,52 +124,47 @@ public class CustomView extends View {
         return Color.rgb(red, green, blue);
     }
 
-    //Coordination
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            if (touchActionListener != null) {
+        if(event.getAction() == MotionEvent.ACTION_DOWN) {
+            if(touchActionListener != null) {
                 touchActionListener.onTouchDown((int) event.getX(), (int) event.getY());
                 float xTouch = event.getX();
                 float yTouch = event.getY();
-//                (x – a)2 + (y – b)2 = R2
-                int result = (int) (Math.pow((xTouch-widthCenter), 2) + Math.pow((yTouch-heightCenter), 2));
-
-                if(result<=Math.pow(radiusIn,2)) {
-                    paint1.setColor(randomColor());
-                    paint2.setColor(randomColor());
-                    paint3.setColor(randomColor());
-                    paint4.setColor(randomColor());
-                    invalidate();
-                }else if(result<=Math.pow(radius,2)) {
-                    double vec = Math.toDegrees(Math.atan((yTouch-heightCenter)/(xTouch-widthCenter)));
-
-                    if(0 < vec && vec < 90 && heightCenter>yTouch){
-                        paint1.setColor(randomColor());
-                        invalidate();
-                    }
-                    if(-90 < vec && vec < 0 && widthCenter<xTouch){
-                        paint2.setColor(randomColor());
-                        invalidate();
-                    }
-                    if(0 < vec && vec < 90 && heightCenter<yTouch){
-                        paint3.setColor(randomColor());
-                        invalidate();
-                    }
-                    if(-90 < vec && vec < 0 && widthCenter>xTouch){
-                        paint4.setColor(randomColor());
-                        invalidate();
-                    }
-                }
+                changeColors(xTouch, yTouch);
             }
         }
         return super.onTouchEvent(event);
     }
 
-    //Listener
     public void setTouchActionListener(TouchActionListener touchActionListener) {
         this.touchActionListener = touchActionListener;
     }
-}
 
-//прикол с настройками
+    private void changeColors(float xTouch, float yTouch) {
+        //(x – a)^2 + (y – b)^2 = R^2
+        int rTouch = (int) (Math.pow((xTouch - widthCenter), 2) + Math.pow((yTouch - heightCenter), 2));
+        double vectorTouch = Math.toDegrees(Math.atan((yTouch - heightCenter) / (xTouch - widthCenter)));
+
+        if(rTouch <= Math.pow(radiusIn, 2)) {
+            paint1.setColor(randomColor());
+            paint2.setColor(randomColor());
+            paint3.setColor(randomColor());
+            paint4.setColor(randomColor());
+        }else if(rTouch <= Math.pow(radius, 2)) {
+            if(0 < vectorTouch && vectorTouch < 90 && heightCenter > yTouch) {
+                paint1.setColor(randomColor());
+            }
+            if(-90 < vectorTouch && vectorTouch < 0 && widthCenter < xTouch) {
+                paint2.setColor(randomColor());
+            }
+            if(0 < vectorTouch && vectorTouch < 90 && heightCenter < yTouch) {
+                paint3.setColor(randomColor());
+            }
+            if(-90 < vectorTouch && vectorTouch < 0 && widthCenter > xTouch) {
+                paint4.setColor(randomColor());
+            }
+        }
+        invalidate();
+    }
+}
