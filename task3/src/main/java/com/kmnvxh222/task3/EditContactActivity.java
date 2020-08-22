@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,8 +24,8 @@ public class EditContactActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate (savedInstanceState);
-        setContentView (R.layout.activity_edit_contact);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_edit_contact);
 
         editTextName = findViewById(R.id.editTextName_e);
         editTextInfo = findViewById(R.id.editTextInfo_e);
@@ -45,18 +44,18 @@ public class EditContactActivity extends AppCompatActivity {
 
     }
 
-    private void getData(){
-        editСontact = (Contacts)getIntent().getSerializableExtra("EDIT_CONTACT");
-        id = (String)getIntent().getSerializableExtra("ID");
-       if(editСontact != null){
-           editTextName.setText(editСontact.getName());
-           editTextInfo.setText(editСontact.getInfo());
-           }
-           editData(editСontact);
-       }
+    private void getData() {
+        editСontact = (Contacts) getIntent().getSerializableExtra("EDIT_CONTACT");
+        id = (String) getIntent().getSerializableExtra("ID");
+        if(editСontact != null) {
+            editTextName.setText(editСontact.getName());
+            editTextInfo.setText(editСontact.getInfo());
+        }
+        editData(editСontact);
+    }
 
 
-    private void editData(final Contacts edit_contact){
+    private void editData(final Contacts edit_contact) {
 
         editTextName.addTextChangedListener(new TextWatcher() {
             @Override
@@ -84,13 +83,13 @@ public class EditContactActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                    edit_contact.setInfo(s.toString());
+                edit_contact.setInfo(s.toString());
             }
         });
     }
 
-    private void saveEditData(Contacts editContact){
-        if(editContact!=null){
+    private void saveEditData(Contacts editContact) {
+        if(editContact != null) {
             Intent intent = new Intent(EditContactActivity.this, MainActivity.class);
             intent.putExtra("EDITED_CONTACT", editContact);
             intent.putExtra("ID", editContact.getId());
@@ -100,14 +99,14 @@ public class EditContactActivity extends AppCompatActivity {
     }
 
 
-    private void removeData(){
+    private void removeData() {
         buttonRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                id = (String)getIntent().getSerializableExtra("ID");
+                id = (String) getIntent().getSerializableExtra("ID");
                 Intent intent = new Intent(EditContactActivity.this, MainActivity.class);
                 intent.putExtra("REMOVE_CONTACT", id);
-                setResult(Activity.RESULT_OK,intent);
+                setResult(Activity.RESULT_OK, intent);
                 finish();
             }
         });

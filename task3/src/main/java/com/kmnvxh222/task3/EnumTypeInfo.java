@@ -1,6 +1,6 @@
 package com.kmnvxh222.task3;
 
-enum enumTypeInfo{
+enum enumTypeInfo {
     email,
     phone
 }

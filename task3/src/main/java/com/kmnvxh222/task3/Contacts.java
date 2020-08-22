@@ -9,7 +9,6 @@ class Contacts implements Serializable {
     private String typeInfo;
     private String info;
 
-
     Contacts(String id, String name, String typeInfo, String info) {
         this.id = id;
         this.name = name;
@@ -51,12 +50,12 @@ class Contacts implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (o == this) return true;
-        if (!(o instanceof Contacts)) {
+        if(o == this) return true;
+        if(!(o instanceof Contacts)) {
             return false;
         }
         Contacts contact = (Contacts) o;
-        return  Objects.equals(name, contact.name) &&
+        return Objects.equals(name, contact.name) &&
                 Objects.equals(typeInfo, contact.typeInfo) &&
                 Objects.equals(info, contact.info);
     }

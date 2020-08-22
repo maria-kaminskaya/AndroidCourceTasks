@@ -1,20 +1,19 @@
 package com.kmnvxh222.task3;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,46 +38,46 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new ContactsRecyclerAdapter(contacts);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager (this, RecyclerView.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
 
         adapter.setOnItemClickListener(new ContactsRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(MainActivity.this, EditContactActivity.class);
-                intent.putExtra("EDIT_CONTACT",contacts.get(position));
-                intent.putExtra("ID",contacts.get(position).getId());
-                startActivityForResult(intent,1000);
+                intent.putExtra("EDIT_CONTACT", contacts.get(position));
+                intent.putExtra("ID", contacts.get(position).getId());
+                startActivityForResult(intent, 1000);
             }
         });
 
         button = findViewById(R.id.floatingActionButton);
-        button.setOnClickListener(new View.OnClickListener () {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddContactActivity.class);
                 startActivityForResult(intent, 2000);
             }
         });
-            itemsNull.setText(R.string.no_contacts);
+        itemsNull.setText(R.string.no_contacts);
     }
 
     //onActivityResult
-    private void getData(@Nullable Intent data){
-        Contacts new_contact = (Contacts)data.getSerializableExtra("NEW_CONTACT");
-        if(new_contact!=null){
+    private void getData(@Nullable Intent data) {
+        Contacts new_contact = (Contacts) data.getSerializableExtra("NEW_CONTACT");
+        if(new_contact != null) {
             contacts.add(new_contact);
             adapter.notifyDataSetChanged();
         }
     }
 
     //onActivityResult
-    private void editData(@Nullable Intent data){
-        Contacts editContact = (Contacts)data.getSerializableExtra("EDITED_CONTACT");
-        String id = (String)data.getSerializableExtra("ID");
+    private void editData(@Nullable Intent data) {
+        Contacts editContact = (Contacts) data.getSerializableExtra("EDITED_CONTACT");
+        String id = (String) data.getSerializableExtra("ID");
 
-        if(editContact!=null && id!=null){
-            for(int i = 0; i<contacts.size(); i++){
-                if(contacts.get(i).getId().equals(id)){
+        if(editContact != null && id != null) {
+            for(int i = 0; i < contacts.size(); i++) {
+                if(contacts.get(i).getId().equals(id)) {
                     contacts.set(i, editContact);
                 }
             }
@@ -86,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void searchListener(){
+    private void searchListener() {
         searchView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -105,10 +104,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    void search(String text){
+    void search(String text) {
         List<Contacts> temp = new ArrayList<>();
-        for(Contacts c: contacts){
-            if(c.getName().contains(text)){
+        for(Contacts c : contacts) {
+            if(c.getName().contains(text)) {
                 temp.add(c);
             }
         }
@@ -116,10 +115,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //onActivityResult
-    private void removeContact(@Nullable Intent data){
-        Integer position = (Integer)data.getSerializableExtra("REMOVE_CONTACT");
-        if(position!=null){
-            contacts.remove((int)position);
+    private void removeContact(@Nullable Intent data) {
+        Integer position = (Integer) data.getSerializableExtra("REMOVE_CONTACT");
+        if(position != null) {
+            contacts.remove((int) position);
             adapter.notifyDataSetChanged();
         }
     }
@@ -128,16 +127,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(data!=null){
-            if (requestCode == 1000){
+        if(data != null) {
+            if(requestCode == 1000) {
                 removeContact(data);
                 editData(data);
-            }else if(requestCode == 2000){
+            }else if(requestCode == 2000) {
                 getData(data);
                 itemsNull.setText("");
             }
         }
-
 
     }
 }
