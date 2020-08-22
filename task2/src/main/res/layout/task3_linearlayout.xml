@@ -2,83 +2,83 @@
 <!--Task3 LinearLayout-->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sing_in"
-        android:textSize="@dimen/sizeTextL"
-        android:textStyle="bold"
-        android:textColor="@color/colorBlack"
         android:layout_marginStart="@dimen/marginL"
         android:layout_marginTop="@dimen/marginXL"
-        android:layout_marginBottom="@dimen/marginM"/>
+        android:layout_marginBottom="@dimen/marginM"
+        android:text="@string/sing_in"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/sizeTextL"
+        android:textStyle="bold" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/marginXL"
-        android:layout_marginEnd="@dimen/marginXL"
         android:layout_marginTop="@dimen/marginL"
-        android:hint="@string/email"
+        android:layout_marginEnd="@dimen/marginXL"
+        android:background="@drawable/rectangle_rounded_white"
         android:gravity="center_vertical"
+        android:hint="@string/email"
         android:inputType="text"
         android:padding="@dimen/marginM"
         android:textColorHint="@color/colorGrey"
         android:textSize="@dimen/sizeText"
-        android:textStyle="bold"
-        android:background="@drawable/rectangle_rounded_white"/>
+        android:textStyle="bold" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/marginXL"
-        android:layout_marginEnd="@dimen/marginXL"
         android:layout_marginTop="@dimen/marginM"
-        android:hint="@string/password"
+        android:layout_marginEnd="@dimen/marginXL"
+        android:background="@drawable/rectangle_rounded_white"
         android:gravity="center_vertical"
+        android:hint="@string/password"
         android:inputType="text"
         android:padding="@dimen/marginM"
         android:textColorHint="@color/colorGrey"
         android:textSize="@dimen/sizeText"
-        android:textStyle="bold"
-        android:background="@drawable/rectangle_rounded_white"/>
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="@dimen/marginL">
+        android:layout_margin="@dimen/marginL"
+        android:orientation="horizontal">
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/remember"
-            android:textSize="@dimen/sizeTextS"/>
+            android:textSize="@dimen/sizeTextS" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/forgot_password"
-            android:textSize="@dimen/sizeTextS"
             android:layout_marginStart="@dimen/marginXL"
-            android:textColor="@color/design_default_color_on_secondary"/>
+            android:text="@string/forgot_password"
+            android:textColor="@color/design_default_color_on_secondary"
+            android:textSize="@dimen/sizeTextS" />
 
     </LinearLayout>
 
     <Button
         android:layout_width="300dp"
         android:layout_height="70dp"
-        android:text="@string/sing_in"
         android:layout_gravity="center"
-        android:textSize="@dimen/sizeTextL"
-        android:textStyle="bold"
-        android:textColor="@color/colorWhite"
+        android:layout_margin="@dimen/marginXXL"
         android:background="@drawable/rectangle_rounded_black"
-        android:layout_margin="@dimen/marginXXL" />
+        android:text="@string/sing_in"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/sizeTextL"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"

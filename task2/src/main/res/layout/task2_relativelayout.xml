@@ -23,58 +23,58 @@
         android:contentDescription="@string/camera"
         android:src="@drawable/camera" />
 
-     <EditText
-         android:id="@+id/textInputLayoutTitle"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:gravity="center_vertical"
-         android:hint="@string/title"
-         android:inputType="text"
-         android:lineSpacingExtra="@dimen/marginXS"
-         android:textColor="@color/colorGrey"
-         android:textColorHint="@color/colorGrey"
-         android:textSize="@dimen/sizeText"
-         android:layout_below="@+id/imageViewPhoto"
-         android:layout_margin="@dimen/marginL"/>
+    <EditText
+        android:id="@+id/textInputLayoutTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageViewPhoto"
+        android:layout_margin="@dimen/marginL"
+        android:gravity="center_vertical"
+        android:hint="@string/title"
+        android:inputType="text"
+        android:lineSpacingExtra="@dimen/marginXS"
+        android:textColor="@color/colorGrey"
+        android:textColorHint="@color/colorGrey"
+        android:textSize="@dimen/sizeText" />
 
     <EditText
         android:id="@+id/textInputLayoutPrice"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textInputLayoutTitle"
+        android:layout_marginStart="@dimen/marginL"
+        android:layout_marginEnd="@dimen/marginL"
         android:gravity="center_vertical"
         android:hint="@string/price"
         android:inputType="text"
         android:lineSpacingExtra="@dimen/marginXS"
         android:textColor="@color/colorGrey"
         android:textColorHint="@color/colorGrey"
-        android:textSize="@dimen/sizeText"
-        android:layout_below="@+id/textInputLayoutTitle"
-        android:layout_marginEnd="@dimen/marginL"
-        android:layout_marginStart="@dimen/marginL"/>
+        android:textSize="@dimen/sizeText" />
 
     <EditText
         android:id="@+id/textInputLayoutLocation"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textInputLayoutTitle"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/textInputLayoutPrice"
         android:gravity="center_vertical"
         android:hint="@string/location"
         android:inputType="text"
         android:lineSpacingExtra="@dimen/marginXS"
         android:textColor="@color/colorGrey"
         android:textColorHint="@color/colorGrey"
-        android:textSize="@dimen/sizeText"
-        android:layout_below="@+id/textInputLayoutTitle"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/textInputLayoutPrice"/>
+        android:textSize="@dimen/sizeText" />
 
     <ImageView
         android:id="@+id/imageViewLocation"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginEnd="@dimen/marginL"
         android:layout_below="@+id/textInputLayoutTitle"
         android:layout_alignBottom="@+id/textInputLayoutLocation"
         android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/marginL"
         android:contentDescription="@string/location"
         android:src="@drawable/location" />
 
@@ -82,43 +82,43 @@
         android:id="@+id/textInputLayoutDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textInputLayoutLocation"
+        android:layout_margin="@dimen/marginL"
         android:gravity="center_vertical"
         android:hint="@string/description"
         android:inputType="text"
         android:lineSpacingExtra="@dimen/marginXS"
         android:textColor="@color/colorGrey"
         android:textColorHint="@color/colorGrey"
-        android:textSize="@dimen/sizeText"
-        android:layout_below="@+id/textInputLayoutLocation"
-        android:layout_margin="@dimen/marginL"/>
+        android:textSize="@dimen/sizeText" />
 
     <EditText
         android:id="@+id/textInputLayoutInventory"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textInputLayoutDescription"
+        android:layout_marginStart="@dimen/marginL"
         android:gravity="center_vertical"
         android:hint="@string/inventory"
         android:inputType="text"
         android:lineSpacingExtra="@dimen/marginXS"
         android:textColor="@color/colorGrey"
         android:textColorHint="@color/colorGrey"
-        android:textSize="@dimen/sizeText"
-        android:layout_marginStart="@dimen/marginL"
-        android:layout_below="@+id/textInputLayoutDescription"/>
+        android:textSize="@dimen/sizeText" />
 
     <EditText
         android:id="@+id/textInputLayoutWeight"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textInputLayoutDescription"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/marginL"
         android:gravity="center_vertical"
         android:hint="@string/weight"
         android:inputType="text"
         android:lineSpacingExtra="@dimen/marginXS"
         android:textColor="@color/colorGrey"
         android:textColorHint="@color/colorGrey"
-        android:textSize="@dimen/sizeText"
-        android:layout_below="@+id/textInputLayoutDescription"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/marginL"/>
+        android:textSize="@dimen/sizeText" />
 
 </RelativeLayout>

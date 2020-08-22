@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--Task3 ConstraintLayout-->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -24,6 +25,9 @@
         android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginXL"
+        android:layout_marginTop="@dimen/marginL"
+        android:layout_marginEnd="@dimen/marginXL"
         android:background="@drawable/rectangle_rounded_white"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
@@ -31,23 +35,17 @@
         android:textColorHint="@color/colorGrey"
         android:textSize="@dimen/sizeText"
         android:textStyle="bold"
-        android:layout_marginStart="@dimen/marginXL"
-        android:layout_marginTop="@dimen/marginL"
-        android:layout_marginEnd="@dimen/marginXL"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSingIn"/>
+        app:layout_constraintTop_toBottomOf="@+id/textViewSingIn" />
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/marginM"
         android:layout_marginStart="@dimen/marginXL"
+        android:layout_marginTop="@dimen/marginM"
         android:layout_marginEnd="@dimen/marginXL"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
         android:background="@drawable/rectangle_rounded_white"
         android:gravity="center_vertical"
         android:hint="@string/password"
@@ -55,7 +53,10 @@
         android:padding="@dimen/marginM"
         android:textColorHint="@color/colorGrey"
         android:textSize="@dimen/sizeText"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
 
     <CheckBox
         android:id="@+id/checkBoxRemember"

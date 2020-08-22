@@ -2,9 +2,9 @@
 <!--Task1 LinearLayout-->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="@dimen/marginM">
 
     <LinearLayout
@@ -12,10 +12,11 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/marginM"
         android:orientation="horizontal">
+
         <ImageView
             android:layout_width="@dimen/sizeImage"
             android:layout_height="@dimen/sizeImage"
-            android:src="@drawable/attractions"/>
+            android:src="@drawable/attractions" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -27,15 +28,17 @@
             android:textSize="@dimen/sizeText"
             android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/marginM"
         android:orientation="horizontal">
+
         <ImageView
             android:layout_width="@dimen/sizeImage"
             android:layout_height="@dimen/sizeImage"
-            android:src="@drawable/dining"/>
+            android:src="@drawable/dining" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -47,15 +50,17 @@
             android:textSize="@dimen/sizeText"
             android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/marginM"
         android:orientation="horizontal">
+
         <ImageView
             android:layout_width="@dimen/sizeImage"
             android:layout_height="@dimen/sizeImage"
-            android:src="@drawable/education"/>
+            android:src="@drawable/education" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -67,15 +72,17 @@
             android:textSize="@dimen/sizeText"
             android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/marginM"
         android:orientation="horizontal">
+
         <ImageView
             android:layout_width="@dimen/sizeImage"
             android:layout_height="@dimen/sizeImage"
-            android:src="@drawable/family"/>
+            android:src="@drawable/family" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -87,15 +94,17 @@
             android:textSize="@dimen/sizeText"
             android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/marginM"
         android:orientation="horizontal">
+
         <ImageView
             android:layout_width="@dimen/sizeImage"
             android:layout_height="@dimen/sizeImage"
-            android:src="@drawable/health"/>
+            android:src="@drawable/health" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -107,15 +116,17 @@
             android:textSize="@dimen/sizeText"
             android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/marginM"
         android:orientation="horizontal">
+
         <ImageView
             android:layout_width="@dimen/sizeImage"
             android:layout_height="@dimen/sizeImage"
-            android:src="@drawable/office"/>
+            android:src="@drawable/office" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -127,15 +138,17 @@
             android:textSize="@dimen/sizeText"
             android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/marginM"
         android:orientation="horizontal">
+
         <ImageView
             android:layout_width="@dimen/sizeImage"
             android:layout_height="@dimen/sizeImage"
-            android:src="@drawable/promotions"/>
+            android:src="@drawable/promotions" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -147,15 +160,17 @@
             android:textSize="@dimen/sizeText"
             android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/marginM"
         android:orientation="horizontal">
+
         <ImageView
             android:layout_width="@dimen/sizeImage"
             android:layout_height="@dimen/sizeImage"
-            android:src="@drawable/radio"/>
+            android:src="@drawable/radio" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -167,15 +182,17 @@
             android:textSize="@dimen/sizeText"
             android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/marginM"
         android:orientation="horizontal">
+
         <ImageView
             android:layout_width="@dimen/sizeImage"
             android:layout_height="@dimen/sizeImage"
-            android:src="@drawable/recipes"/>
+            android:src="@drawable/recipes" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -187,15 +204,17 @@
             android:textSize="@dimen/sizeText"
             android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/marginM"
         android:orientation="horizontal">
+
         <ImageView
             android:layout_width="@dimen/sizeImage"
             android:layout_height="@dimen/sizeImage"
-            android:src="@drawable/sports"/>
+            android:src="@drawable/sports" />
 
         <TextView
             android:layout_width="wrap_content"
