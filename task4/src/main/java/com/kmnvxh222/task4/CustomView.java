@@ -9,18 +9,9 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-
 import java.util.Random;
-
 import androidx.annotation.Nullable;
 
-/**
- * Этапы инициализации View
- * 1) onAttachedToWindow
- * 2) onMeasure
- * 3) onLayout
- * 4) onDraw
- */
 public class CustomView extends View {
 
     interface TouchActionListener {
@@ -116,14 +107,6 @@ public class CustomView extends View {
         super.onDraw(canvas);
     }
 
-    private int randomColor() {
-        Random r = new Random();
-        int red = r.nextInt(256);
-        int green = r.nextInt(256);
-        int blue = r.nextInt(256);
-        return Color.rgb(red, green, blue);
-    }
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if(event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -167,4 +150,13 @@ public class CustomView extends View {
         }
         invalidate();
     }
+
+    private int randomColor() {
+        Random r = new Random();
+        int red = r.nextInt(256);
+        int green = r.nextInt(256);
+        int blue = r.nextInt(256);
+        return Color.rgb(red, green, blue);
+    }
+
 }

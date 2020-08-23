@@ -4,4 +4,5 @@
     <string name="message_type">Message type</string>
     <string name="hint">If true - Snackbar and if false - Toast</string>
     <string name="pressed_coordinates_message">Pressed coordinates message</string>
+    <string name="customview">CustomView</string>
 </resources>
