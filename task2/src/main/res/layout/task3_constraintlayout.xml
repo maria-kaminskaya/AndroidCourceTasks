@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Task3 ConstraintLayout-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textViewSingIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginL"
+        android:layout_marginTop="@dimen/marginXL"
+        android:text="@string/sing_in"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/sizeTextL"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginXL"
+        android:layout_marginTop="@dimen/marginL"
+        android:layout_marginEnd="@dimen/marginXL"
+        android:background="@drawable/rectangle_rounded_white"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:padding="@dimen/marginM"
+        android:textColorHint="@color/colorGrey"
+        android:textSize="@dimen/sizeText"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSingIn" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginXL"
+        android:layout_marginTop="@dimen/marginM"
+        android:layout_marginEnd="@dimen/marginXL"
+        android:background="@drawable/rectangle_rounded_white"
+        android:gravity="center_vertical"
+        android:hint="@string/password"
+        android:inputType="numberPassword"
+        android:padding="@dimen/marginM"
+        android:textColorHint="@color/colorGrey"
+        android:textSize="@dimen/sizeText"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+
+    <CheckBox
+        android:id="@+id/checkBoxRemember"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginM"
+        android:layout_marginTop="@dimen/marginL"
+        android:text="@string/remember"
+        android:textSize="@dimen/sizeTextS"
+        app:layout_constraintEnd_toStartOf="@+id/textViewForgot"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+
+    <TextView
+        android:id="@+id/textViewForgot"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginXL"
+        android:layout_marginTop="@dimen/marginL"
+        android:text="@string/forgot_password"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textSize="@dimen/sizeTextS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/checkBoxRemember"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+
+    <Button
+        android:id="@+id/buttonSingIn"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/marginXXL"
+        android:background="@drawable/rectangle_rounded_black"
+        android:text="@string/sing_in"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/sizeTextL"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|bottom"
+        android:text="@string/just_sing_in"
+        android:textColor="@color/colorGrey"
+        android:textSize="@dimen/sizeTextS"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
