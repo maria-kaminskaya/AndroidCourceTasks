@@ -37,11 +37,6 @@ public class ContactsRecyclerAdapter extends RecyclerView.Adapter<ContactsRecycl
         return contacts.size();
     }
 
-    public void addItem(Contacts new_contact) {
-        contacts.add(new_contact);
-        notifyItemChanged(contacts.indexOf(new_contact));
-    }
-
     static class ContactsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView textName;
@@ -82,8 +77,8 @@ public class ContactsRecyclerAdapter extends RecyclerView.Adapter<ContactsRecycl
         }
     }
 
-    public void updateList(List<Contacts> search_contact) {
-        contacts = search_contact;
+    public void updateList(List<Contacts> searchContact) {
+        contacts = searchContact;
         notifyDataSetChanged();
     }
 
