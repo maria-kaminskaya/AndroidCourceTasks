@@ -116,9 +116,13 @@ public class MainActivity extends AppCompatActivity {
 
     //onActivityResult
     private void removeContact(@Nullable Intent data) {
-        Integer position = (Integer) data.getSerializableExtra("REMOVE_CONTACT");
-        if(position != null) {
-            contacts.remove((int) position);
+        String id = (String) data.getSerializableExtra("REMOVE_CONTACT");
+        if(id != null) {
+            for(Contacts i: contacts){
+                if(i.getId().equals(id)){
+                    contacts.remove(i);
+                }
+            }
             adapter.notifyDataSetChanged();
         }
     }
