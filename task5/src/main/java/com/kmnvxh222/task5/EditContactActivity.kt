@@ -1,34 +1,45 @@
 package com.kmnvxh222.task5
 
-import android.app.Activity
-import android.content.Intent
+import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_edit_contact.*
-import java.io.Serializable
+import com.kmnvxh222.task5.db.DBHelper
+import kotlinx.android.synthetic.main.activity_edit_contact.editTextInfo
+import kotlinx.android.synthetic.main.activity_edit_contact.editTextName
+import kotlinx.android.synthetic.main.activity_edit_contact.removeButton
+import kotlinx.android.synthetic.main.activity_edit_contact.toolbar
 
 class EditContactActivity : AppCompatActivity() {
 
     private var editContact: Contacts? = null
     private lateinit var id: String
+    private lateinit var db: SQLiteDatabase
+    private lateinit var dbHelper: DBHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_contact)
-        toolbar.setNavigationOnClickListener {saveEditData(editContact)}
+
+        dataBaseInitialization()
+
         getData()
-        removeButton.setOnClickListener {removeData()}
+
+        toolbar.setNavigationOnClickListener { saveEditData(editContact) }
+        removeButton.setOnClickListener { removeData(id) }
+    }
+
+    private fun dataBaseInitialization() {
+        dbHelper = DBHelper(this, null)
+        db = dbHelper.writableDatabase
     }
 
     private fun getData() {
-        editContact = intent.getSerializableExtra("EDIT_CONTACT") as? Contacts
         id = intent.getSerializableExtra("ID") as String
-        if (editContact != null) {
-            editTextName.setText(editContact!!.name)
-            editTextInfo.setText(editContact!!.info)
-        }
+        editContact = dbHelper.getContactByID(id, db)
+        editTextName.setText(editContact?.name)
+        editTextInfo.setText(editContact?.info)
         editData(editContact!!)
     }
 
@@ -56,19 +67,18 @@ class EditContactActivity : AppCompatActivity() {
 
     private fun saveEditData(editContact: Contacts?) {
         if (editContact != null) {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("EDITED_CONTACT", editContact as Serializable)
-            intent.putExtra("ID", editContact.id)
-            setResult(Activity.RESULT_OK, intent)
+            dbHelper.updateContact(editContact, db)
             finish()
         }
     }
 
-    private fun removeData() {
-        id = intent.getSerializableExtra("ID") as String
-        val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("REMOVE_CONTACT", id)
-        setResult(Activity.RESULT_OK, intent)
+    private fun removeData(id: String) {
+        dbHelper.deleteContact(id, db)
         finish()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        db.close()
     }
 }

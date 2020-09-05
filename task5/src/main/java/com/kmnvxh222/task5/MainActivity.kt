@@ -1,70 +1,74 @@
 package com.kmnvxh222.task5
 
 import android.content.Intent
+import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kmnvxh222.task5.ContactsRecyclerAdapter.OnItemClickListener
-import kotlinx.android.synthetic.main.activity_main.*
+import com.kmnvxh222.task5.db.DBHelper
+import kotlinx.android.synthetic.main.activity_main.floatingActionButton
+import kotlinx.android.synthetic.main.activity_main.itemsNull
+import kotlinx.android.synthetic.main.activity_main.recyclerView
+import kotlinx.android.synthetic.main.activity_main.searchView
 
 class MainActivity : AppCompatActivity() {
 
     private val contacts: MutableList<Contacts> = ArrayList()
     private lateinit var adapter: ContactsRecyclerAdapter
+    private lateinit var db: SQLiteDatabase
+    private lateinit var dbHelper: DBHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        dataBaseInitialization()
+
         adapter = ContactsRecyclerAdapter(contacts)
+
+        getAllContacts()
+
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
         adapter.setOnItemClickListener(adapterClickListener)
 
-        floatingActionButton.setOnClickListener{addContact()}
+        floatingActionButton.setOnClickListener { addContact() }
 
         searchListener()
-        itemsNull.setText(R.string.no_contacts)
     }
 
-    private val adapterClickListener = object :OnItemClickListener{
+    private fun dataBaseInitialization() {
+        dbHelper = DBHelper(this, null)
+        db = dbHelper.readableDatabase
+    }
+
+    private val adapterClickListener = object : OnItemClickListener {
         override fun onItemClick(view: View, position: Int) {
-            clickContact(position)
+            val intent = Intent(this@MainActivity, EditContactActivity::class.java)
+            intent.putExtra("ID", contacts[position].id)
+            startActivity(intent)
         }
     }
 
-    private fun addContact(){
+    private fun addContact() {
         val intent = Intent(this, AddContactActivity::class.java)
-        startActivityForResult(intent, 2000)
+        startActivity(intent)
     }
 
-    private fun clickContact(position: Int) {
-        val intent = Intent(this@MainActivity, EditContactActivity::class.java)
-        intent.putExtra("EDIT_CONTACT", contacts[position])
-        intent.putExtra("ID", contacts[position].id)
-        startActivityForResult(intent, 1000)
-    }
-
-    private fun getData(data: Intent) {
-        val newContact: Contacts = data.getSerializableExtra("NEW_CONTACT") as Contacts
-        contacts.add(newContact)
-        adapter.notifyDataSetChanged()
-    }
-
-    private fun editData(data: Intent) {
-        val editContact = data.getSerializableExtra("EDITED_CONTACT") as? Contacts
-        val id = data.getSerializableExtra("ID") as? String
-        if (editContact != null) {
-        for (i in contacts.indices) {
-            if (contacts[i].id == id) {
-                    contacts[i] = editContact
-                }
-            }
+    private fun getAllContacts() {
+        contacts.clear()
+        contacts.addAll(dbHelper.getAllContacts(db))
+        if (contacts.isEmpty()) {
+            itemsNull.setText(R.string.no_contacts)
+        } else {
+            itemsNull.text = ""
         }
         adapter.notifyDataSetChanged()
     }
@@ -82,7 +86,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun search(text: String?) {
-        val temp: MutableList<Contacts> = java.util.ArrayList<Contacts>()
+        val temp: MutableList<Contacts> = ArrayList()
         for (c in contacts) {
             if (c.name.contains(text.toString())) {
                 temp.add(c)
@@ -91,30 +95,15 @@ class MainActivity : AppCompatActivity() {
         adapter.updateList(temp)
     }
 
-    private fun removeContact(data: Intent) {
-        val id = data.getSerializableExtra("REMOVE_CONTACT") as? String
-        for (i in contacts) {
-            if (i.id == id) {
-                contacts.remove(i)
-            }
-        }
-        adapter.notifyDataSetChanged()
+    override fun onDestroy() {
+        super.onDestroy()
+        db.close()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (data != null) {
-            when (requestCode) {
-                1000 -> {
-                    removeContact(data)
-                    editData(data)
-                }
-                2000 -> {
-                    getData(data)
-                    itemsNull.text = ""
-                }
-            }
-        }
+    override fun onResume() {
+        super.onResume()
+        getAllContacts()
+        adapter.notifyDataSetChanged()
     }
 
 }
