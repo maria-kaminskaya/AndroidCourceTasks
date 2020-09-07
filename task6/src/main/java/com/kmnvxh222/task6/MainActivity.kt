@@ -99,8 +99,8 @@ class MainActivity : AppCompatActivity() {
         db.close()
     }
 
-    override fun onRestart() {
-        super.onRestart()
+    override fun onResume() {
+        super.onResume()
         getAllContacts()
         adapter.notifyDataSetChanged()
     }
