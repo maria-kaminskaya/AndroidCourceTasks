@@ -11,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import static com.kmnvxh222.task4.Const.PREF_KEY;
+import static com.kmnvxh222.task4.Const.SETTING_FILE_NAME;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private Boolean getSetting() {
-        SharedPreferences shared = getSharedPreferences("SettingActivity", Context.MODE_PRIVATE);
+        SharedPreferences shared = getSharedPreferences(SETTING_FILE_NAME, Context.MODE_PRIVATE);
         messageSetting = shared.getBoolean(PREF_KEY, true);
         return messageSetting;
     }

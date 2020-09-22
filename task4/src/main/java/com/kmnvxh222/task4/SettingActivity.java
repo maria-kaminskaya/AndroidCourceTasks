@@ -9,6 +9,7 @@ import android.widget.CompoundButton;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import static com.kmnvxh222.task4.Const.PREF_KEY;
+import static com.kmnvxh222.task4.Const.SETTING_FILE_NAME;
 
 public class SettingActivity extends AppCompatActivity {
 
@@ -43,7 +44,7 @@ public class SettingActivity extends AppCompatActivity {
     };
 
     private void saveSetting(Boolean setting) {
-        SharedPreferences shared = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences shared = getSharedPreferences(SETTING_FILE_NAME,Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = shared.edit();
         edit.clear();
         edit.putBoolean(PREF_KEY, setting);

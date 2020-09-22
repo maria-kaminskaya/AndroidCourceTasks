@@ -12,6 +12,10 @@ import android.view.View;
 import java.util.Random;
 import androidx.annotation.Nullable;
 
+import static com.kmnvxh222.task4.Const.LOWER_COORDINATE_BORDER;
+import static com.kmnvxh222.task4.Const.ORIGIN;
+import static com.kmnvxh222.task4.Const.UPPER_COORDINATE_BORDER;
+
 public class CustomView extends View {
 
     interface TouchActionListener {
@@ -53,16 +57,6 @@ public class CustomView extends View {
             radiusIn = radius / 3;
             typedArray.recycle();
         }
-    }
-
-    @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-    }
-
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
     @Override
@@ -111,10 +105,10 @@ public class CustomView extends View {
     public boolean onTouchEvent(MotionEvent event) {
         if(event.getAction() == MotionEvent.ACTION_DOWN) {
             if(touchActionListener != null) {
-                touchActionListener.onTouchDown((int) event.getX(), (int) event.getY());
                 float xTouch = event.getX();
                 float yTouch = event.getY();
                 changeColors(xTouch, yTouch);
+                touchActionListener.onTouchDown((int) xTouch , (int) yTouch);
             }
         }
         return super.onTouchEvent(event);
@@ -135,16 +129,16 @@ public class CustomView extends View {
             paint3.setColor(randomColor());
             paint4.setColor(randomColor());
         }else if(rTouch <= Math.pow(radius, 2)) {
-            if(0 < vectorTouch && vectorTouch < 90 && heightCenter > yTouch) {
+            if(ORIGIN < vectorTouch && vectorTouch < UPPER_COORDINATE_BORDER && heightCenter > yTouch) {
                 paint1.setColor(randomColor());
             }
-            if(-90 < vectorTouch && vectorTouch < 0 && widthCenter < xTouch) {
+            if(LOWER_COORDINATE_BORDER < vectorTouch && vectorTouch < ORIGIN && widthCenter < xTouch) {
                 paint2.setColor(randomColor());
             }
-            if(0 < vectorTouch && vectorTouch < 90 && heightCenter < yTouch) {
+            if(ORIGIN < vectorTouch && vectorTouch < UPPER_COORDINATE_BORDER && heightCenter < yTouch) {
                 paint3.setColor(randomColor());
             }
-            if(-90 < vectorTouch && vectorTouch < 0 && widthCenter > xTouch) {
+            if(LOWER_COORDINATE_BORDER < vectorTouch && vectorTouch < ORIGIN && widthCenter > xTouch) {
                 paint4.setColor(randomColor());
             }
         }
