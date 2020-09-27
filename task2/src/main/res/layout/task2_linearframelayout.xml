@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Task2 LinearLayout + FrameLayout-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/photo"
+            android:scaleType="centerCrop"
+            android:src="@drawable/photo" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/camera"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/marginM"
+            android:contentDescription="@string/camera" />
+    </FrameLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/marginM">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/title"
+            android:gravity="center_vertical"
+            android:inputType="text"
+            android:lineSpacingExtra="@dimen/marginXS"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:textColor="@color/colorGrey"
+            android:textColorHint="@color/colorGrey"
+            android:textColorLink="@color/colorGrey"
+            android:textSize="@dimen/sizeText"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="@dimen/marginM">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:layout_marginEnd="@dimen/marginL">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/price"
+            android:gravity="center_vertical"
+            android:inputType="text"
+            android:lineSpacingExtra="@dimen/marginXS"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:textColor="@color/colorGrey"
+            android:textColorHint="@color/colorGrey"
+            android:textColorLink="@color/colorGrey"
+            android:textSize="@dimen/sizeText"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/location"
+            android:gravity="center_vertical"
+            android:inputType="text"
+            android:lineSpacingExtra="@dimen/marginXS"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:textColor="@color/colorGrey"
+            android:textColorHint="@color/colorGrey"
+            android:textColorLink="@color/colorGrey"
+            android:textSize="@dimen/sizeText"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_weight="0"
+        android:contentDescription="@string/location"
+        android:src="@drawable/location"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="@dimen/marginM"/>
+</LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/marginM">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/description"
+            android:gravity="center_vertical"
+            android:inputType="text"
+            android:lineSpacingExtra="@dimen/marginXS"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:textColor="@color/colorGrey"
+            android:textColorHint="@color/colorGrey"
+            android:textColorLink="@color/colorGrey"
+            android:textSize="@dimen/sizeText"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/marginM">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_marginEnd="@dimen/marginXL">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:hint="@string/inventory"
+                android:inputType="text"
+                android:lineSpacingExtra="@dimen/marginXS"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:textColor="@color/colorGrey"
+                android:textColorHint="@color/colorGrey"
+                android:textColorLink="@color/colorGrey"
+                android:textSize="@dimen/sizeText" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_marginStart="@dimen/marginXL">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/weight"
+                android:gravity="center_vertical"
+                android:inputType="text"
+                android:lineSpacingExtra="@dimen/marginXS"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:textColor="@color/colorGrey"
+                android:textColorHint="@color/colorGrey"
+                android:textColorLink="@color/colorGrey"
+                android:textSize="@dimen/sizeText"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

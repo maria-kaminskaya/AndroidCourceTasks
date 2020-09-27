@@ -1,2 +1,4 @@
-include ':Task1'
+include ':task3'
+include ':task2'
+include ':task1'
 rootProject.name = "AndroidCourceTasks"
