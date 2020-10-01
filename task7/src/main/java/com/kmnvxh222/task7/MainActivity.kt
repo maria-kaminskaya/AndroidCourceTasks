@@ -42,8 +42,6 @@ class MainActivity : AppCompatActivity() {
         buttonSetting.setOnClickListener {
             val manager = supportFragmentManager
             settingsDialogFragment.show(manager, "SettingsDialog")
-//            setTypeDataStorage()
-
         }
     }
 
@@ -61,18 +59,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-//    override fun onPause() {
-//        super.onPause()
-//        setTypeDataStorage()
-//    }
-//
-//    override fun onResume() {
-//        super.onResume()
-//        setTypeDataStorage()
-//    }
-//
-//    override fun onStart() {
-//        super.onStart()
-//        setTypeDataStorage()
-//    }
+    override fun onResume() {
+        super.onResume()
+        setTypeDataStorage()
+    }
 }

@@ -10,20 +10,17 @@ import java.io.File
 
 
 class ExternalDataStorage : DataStorageInterface {
-
-
+    
     override fun readData(context: Context): String {
         var text = ""
         if (isExternalStorageReadable()) {
             try {
                 val sdPath = context.getExternalFilesDir(null)
-                Log.d("ExternalDataStorage", "sdPath ${sdPath}")
                 val sdFile = File(sdPath, FILE_NAME)
                 val inp = sdFile.inputStream()
                 val bytes = ByteArray(inp.available())
                 inp.read(bytes)
                 text = String(bytes)
-                Log.d("ExternalDataStorage", "readData ${text}")
             } catch (e: Exception) {
                 Log.d("ExternalDataStorage", "readData ${e}")
                 return e.toString()

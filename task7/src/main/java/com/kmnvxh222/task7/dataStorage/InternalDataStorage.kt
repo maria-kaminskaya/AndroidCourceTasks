@@ -17,7 +17,6 @@ class InternalDataStorage : DataStorageInterface {
                 text = stream.bufferedReader().use {
                     it.readText()
                 }
-                Log.d("InternalDataStorage", "readData ${text}")
             }
         } catch (e: Exception) {
             Log.d("InternalDataStorage", "readData ${e}")
