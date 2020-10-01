@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">task7</string>
+
+    <string name="settingsTitle">Select file storage type</string>
+    <string name="settingsMessage">Selected file storage type: </string>
+    <string name="settingsOK">OK</string>
+    <string name="settingsCanceled">Cancel</string>
+    <string name="externalDataStorage">External Data Storage</string>
+    <string name="internalDataStorage">Internal Data Storage</string>
+    <string name="errorDialog">Activity cannot be null</string>
+
+    <string-array name="typeDataStorage">
+        <item>External Data Storage</item>
+        <item>Internal Data Storage</item>
+    </string-array>
+</resources>
