@@ -19,7 +19,7 @@ public class TreadCompletableRepository implements DBInterface {
     private DBHelper dbHelper;
     private ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.SECONDS, new LinkedBlockingQueue());
 
-    public TreadCompletableRepository(DBHelper dbHelper){
+    public TreadCompletableRepository(DBHelper dbHelper) {
         this.dbHelper = dbHelper;
     }
 

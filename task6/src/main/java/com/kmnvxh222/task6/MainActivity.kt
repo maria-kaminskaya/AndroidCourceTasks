@@ -11,9 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kmnvxh222.task6.ContactsRecyclerAdapter.OnItemClickListener
 import com.kmnvxh222.task6.db.DBHelper
 import com.kmnvxh222.task6.db.DBInterface
-import com.kmnvxh222.task6.db.DBListener
-import com.kmnvxh222.task6.db.async.RxJavaRepository
-import com.kmnvxh222.task6.db.async.ThreadHandlerRepository
 import com.kmnvxh222.task6.db.async.TreadCompletableRepository
 import kotlinx.android.synthetic.main.activity_main.floatingActionButton
 import kotlinx.android.synthetic.main.activity_main.itemsNull
@@ -24,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     private val contacts: MutableList<Contact> = ArrayList()
     private lateinit var adapter: ContactsRecyclerAdapter
-//    private lateinit var dbHelper: DBHelper
+
     private lateinit var dbInterface: DBInterface
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,8 +31,6 @@ class MainActivity : AppCompatActivity() {
         dataBaseInitialization()
 
         adapter = ContactsRecyclerAdapter(contacts)
-
-//        getAllContacts()
 
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)

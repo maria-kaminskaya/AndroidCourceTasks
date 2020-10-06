@@ -6,7 +6,6 @@ import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import com.kmnvxh222.task6.db.DBHelper
 import com.kmnvxh222.task6.db.DBInterface
-import com.kmnvxh222.task6.db.async.RxJavaRepository
 import com.kmnvxh222.task6.db.async.TreadCompletableRepository
 import kotlinx.android.synthetic.main.activity_add_contact.editTextInfo
 import kotlinx.android.synthetic.main.activity_add_contact.editTextName
@@ -34,6 +33,8 @@ class AddContactActivity : AppCompatActivity() {
 
     private fun dataBaseInitialization() {
         val dbHelper = DBHelper(this)
+
+
 //        dbInterface = RxJavaRepository(dbHelper)
         dbInterface = TreadCompletableRepository(dbHelper)
     }

@@ -5,11 +5,10 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.kmnvxh222.task6.Contact
-import java.io.Serializable
 
-class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION){
+class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
-    val db  = readableDatabase
+    val db = readableDatabase
     override fun onCreate(db: SQLiteDatabase?) {
         val CREATE_CONTACTS_TABLE = ("CREATE TABLE $TABLE_CONTACTS ($COLUMN_ID TEXT PRIMARY KEY," +
                 "$COLUMN_NAME TEXT," +
