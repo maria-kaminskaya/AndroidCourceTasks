@@ -2,7 +2,7 @@ package com.kmnvxh222.task6
 
 import java.io.Serializable
 
-class Contacts(
+class Contact(
         var id: String,
         var name: String,
         var typeInfo: String,
@@ -11,7 +11,7 @@ class Contacts(
 
     override fun equals(other: Any?): Boolean {
         if (other === this) return true
-        if (other !is Contacts) {
+        if (other !is Contact) {
             return false
         }
         return name == other.name &&

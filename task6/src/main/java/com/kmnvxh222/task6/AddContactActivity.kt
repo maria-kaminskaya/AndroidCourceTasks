@@ -1,11 +1,13 @@
 package com.kmnvxh222.task6
 
-import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.view.View
 import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import com.kmnvxh222.task6.db.DBHelper
+import com.kmnvxh222.task6.db.DBInterface
+import com.kmnvxh222.task6.db.async.RxJavaRepository
+import com.kmnvxh222.task6.db.async.TreadCompletableRepository
 import kotlinx.android.synthetic.main.activity_add_contact.editTextInfo
 import kotlinx.android.synthetic.main.activity_add_contact.editTextName
 import kotlinx.android.synthetic.main.activity_add_contact.radioButtonEmail
@@ -15,9 +17,8 @@ import kotlinx.android.synthetic.main.activity_add_contact.toolbar
 class AddContactActivity : AppCompatActivity() {
 
     private lateinit var typeInfo: String
-    private var contact: Contacts? = null
-    private lateinit var db: SQLiteDatabase
-    private lateinit var dbHelper: DBHelper
+    private var contact: Contact? = null
+    private lateinit var dbInterface: DBInterface
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,11 +29,13 @@ class AddContactActivity : AppCompatActivity() {
         radioButtonPhone.setOnClickListener(radioButtonClickListener)
         radioButtonEmail.setOnClickListener(radioButtonClickListener)
         toolbar.setNavigationOnClickListener { saveContact(contact) }
+
     }
 
     private fun dataBaseInitialization() {
-        dbHelper = DBHelper(this, null)
-        db = dbHelper.writableDatabase
+        val dbHelper = DBHelper(this)
+//        dbInterface = RxJavaRepository(dbHelper)
+        dbInterface = TreadCompletableRepository(dbHelper)
     }
 
     private val radioButtonClickListener = View.OnClickListener { v ->
@@ -55,18 +58,22 @@ class AddContactActivity : AppCompatActivity() {
         for (i in 0 until count) {
             id = randString.append(symbols[(Math.random() * symbols.length).toInt()]).toString()
         }
-        contact = Contacts(id, name, typeInfo, info)
+        contact = Contact(id, name, typeInfo, info)
     }
 
-    private fun saveContact(contact: Contacts?) {
+    private fun saveContact(contact: Contact?) {
         if (contact != null) {
-            dbHelper.addContact(contact, db)
-            finish()
+            dbInterface.addContact(contact) {
+                finish()
+            }
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        db.close()
+        dbInterface.close()
     }
 }
+
+
+

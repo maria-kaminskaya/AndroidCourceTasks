@@ -1,7 +1,6 @@
 package com.kmnvxh222.task6
 
 import android.content.Intent
-import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -11,6 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kmnvxh222.task6.ContactsRecyclerAdapter.OnItemClickListener
 import com.kmnvxh222.task6.db.DBHelper
+import com.kmnvxh222.task6.db.DBInterface
+import com.kmnvxh222.task6.db.DBListener
+import com.kmnvxh222.task6.db.async.RxJavaRepository
+import com.kmnvxh222.task6.db.async.ThreadHandlerRepository
+import com.kmnvxh222.task6.db.async.TreadCompletableRepository
 import kotlinx.android.synthetic.main.activity_main.floatingActionButton
 import kotlinx.android.synthetic.main.activity_main.itemsNull
 import kotlinx.android.synthetic.main.activity_main.recyclerView
@@ -18,10 +22,10 @@ import kotlinx.android.synthetic.main.activity_main.searchView
 
 class MainActivity : AppCompatActivity() {
 
-    private val contacts: MutableList<Contacts> = ArrayList()
+    private val contacts: MutableList<Contact> = ArrayList()
     private lateinit var adapter: ContactsRecyclerAdapter
-    private lateinit var db: SQLiteDatabase
-    private lateinit var dbHelper: DBHelper
+//    private lateinit var dbHelper: DBHelper
+    private lateinit var dbInterface: DBInterface
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter = ContactsRecyclerAdapter(contacts)
 
-        getAllContacts()
+//        getAllContacts()
 
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
@@ -44,8 +48,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun dataBaseInitialization() {
-        dbHelper = DBHelper(this, null)
-        db = dbHelper.readableDatabase
+        val dbHelper = DBHelper(this)
+//        dbInterface = ThreadHandlerRepository(dbHelper)
+//        dbInterface = RxJavaRepository(dbHelper)
+        dbInterface = TreadCompletableRepository(dbHelper)
     }
 
     private val adapterClickListener = object : OnItemClickListener {
@@ -62,14 +68,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getAllContacts() {
-        contacts.clear()
-        contacts.addAll(dbHelper.getAllContacts(db))
-        if (contacts.isEmpty()) {
-            itemsNull.setText(R.string.no_contacts)
-        } else {
-            itemsNull.text = ""
+
+        dbInterface.getAllContacts {
+            contacts.clear()
+            contacts.addAll(it)
+            if (contacts.isEmpty()) {
+                itemsNull.setText(R.string.no_contacts)
+            } else {
+                itemsNull.text = ""
+            }
+            adapter.notifyDataSetChanged()
         }
-        adapter.notifyDataSetChanged()
     }
 
     private fun searchListener() {
@@ -85,7 +94,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun search(text: String?) {
-        val temp: MutableList<Contacts> = ArrayList()
+        val temp: MutableList<Contact> = ArrayList()
         for (c in contacts) {
             if (c.name.contains(text.toString())) {
                 temp.add(c)
@@ -96,7 +105,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        db.close()
+        dbInterface.close();
     }
 
     override fun onResume() {
@@ -106,4 +115,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
+
+
+
 

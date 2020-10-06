@@ -1,12 +1,14 @@
 package com.kmnvxh222.task6
 
-import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
-import com.kmnvxh222.task6.Contacts
 import com.kmnvxh222.task6.db.DBHelper
+import com.kmnvxh222.task6.db.DBInterface
+import com.kmnvxh222.task6.db.async.RxJavaRepository
+import com.kmnvxh222.task6.db.async.ThreadHandlerRepository
+import com.kmnvxh222.task6.db.async.TreadCompletableRepository
 import kotlinx.android.synthetic.main.activity_edit_contact.editTextInfo
 import kotlinx.android.synthetic.main.activity_edit_contact.editTextName
 import kotlinx.android.synthetic.main.activity_edit_contact.removeButton
@@ -14,10 +16,10 @@ import kotlinx.android.synthetic.main.activity_edit_contact.toolbar
 
 class EditContactActivity : AppCompatActivity() {
 
-    private var editContact: Contacts? = null
+    private var editContact: Contact? = null
     private lateinit var id: String
-    private lateinit var db: SQLiteDatabase
-    private lateinit var dbHelper: DBHelper
+    private lateinit var dbInterface: DBInterface
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,19 +34,28 @@ class EditContactActivity : AppCompatActivity() {
     }
 
     private fun dataBaseInitialization() {
-        dbHelper = DBHelper(this, null)
-        db = dbHelper.writableDatabase
+        val dbHelper = DBHelper(this)
+//        dbInterface = ThreadHandlerRepository(dbHelper)
+//        dbInterface = RxJavaRepository(dbHelper)
+        dbInterface = TreadCompletableRepository(dbHelper)
     }
 
     private fun getData() {
         id = intent.getSerializableExtra("ID") as String
-        editContact = dbHelper.getContactByID(id, db)
-        editTextName.setText(editContact?.name)
-        editTextInfo.setText(editContact?.info)
-        editData(editContact!!)
+        dbInterface.getContactByID(id) {
+            for (i in it) {
+                if (i.id == id) {
+                    editContact = i
+                    editTextName.setText(editContact?.name)
+                    editTextInfo.setText(editContact?.info)
+                    editData(editContact!!)
+                }
+            }
+
+        }
     }
 
-    private fun editData(editContact: Contacts) {
+    private fun editData(editContact: Contact) {
         editTextName.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
@@ -66,20 +77,22 @@ class EditContactActivity : AppCompatActivity() {
         })
     }
 
-    private fun saveEditData(editContact: Contacts?) {
+    private fun saveEditData(editContact: Contact?) {
         if (editContact != null) {
-            dbHelper.updateContact(editContact, db)
-            finish()
+            dbInterface.updateContact(editContact) {
+                finish()
+            }
         }
     }
 
     private fun removeData(id: String) {
-        dbHelper.deleteContact(id, db)
-        finish()
+        dbInterface.deleteContact(id) {
+            finish()
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        db.close()
+        dbInterface.close()
     }
 }

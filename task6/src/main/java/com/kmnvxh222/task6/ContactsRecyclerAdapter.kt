@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.item_contact.view.imageView
 import kotlinx.android.synthetic.main.item_contact.view.textViewInfo
 import kotlinx.android.synthetic.main.item_contact.view.textViewName
 
-class ContactsRecyclerAdapter(private var contacts: MutableList<Contacts>) : RecyclerView.Adapter<ContactsRecyclerAdapter.ContactsViewHolder>() {
+class ContactsRecyclerAdapter(private var contacts: MutableList<Contact>) : RecyclerView.Adapter<ContactsRecyclerAdapter.ContactsViewHolder>() {
 
     private lateinit var mItemClickListener: OnItemClickListener
 
@@ -28,11 +28,10 @@ class ContactsRecyclerAdapter(private var contacts: MutableList<Contacts>) : Rec
             itemView.setOnClickListener(this)
         }
 
-        fun bind(contact: Contacts) {
+        fun bind(contact: Contact) {
             var idSrc = 0
             try {
                 itemView.textViewName.text = contact.name
-
                 when (contact.typeInfo) {
                     EnumTypeInfo.email.toString() -> {
                         itemView.textViewInfo.text = contact.info
@@ -53,7 +52,7 @@ class ContactsRecyclerAdapter(private var contacts: MutableList<Contacts>) : Rec
         override fun onClick(v: View) = mItemClickListener.onItemClick(v, adapterPosition)
     }
 
-    fun updateList(searchContact: MutableList<Contacts>) {
+    fun updateList(searchContact: MutableList<Contact>) {
         contacts = searchContact
         notifyDataSetChanged()
     }
