@@ -8,10 +8,17 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.kmnvxh222.task6.ContactsRecyclerAdapter.OnItemClickListener
+import com.kmnvxh222.task6.adapters.ContactsRecyclerAdapter
+import com.kmnvxh222.task6.adapters.ContactsRecyclerAdapter.OnItemClickListener
+import com.kmnvxh222.task6.async.RxJavaRepository
+import com.kmnvxh222.task6.async.ThreadHandlerRepository
 import com.kmnvxh222.task6.db.DBHelper
 import com.kmnvxh222.task6.db.DBInterface
-import com.kmnvxh222.task6.db.async.TreadCompletableRepository
+import com.kmnvxh222.task6.async.TreadCompletableRepository
+import com.kmnvxh222.task6.model.Contact
+import com.kmnvxh222.task6.settings.SettingsDialogFragment
+import com.kmnvxh222.task6.settings.SharedPreferencesSettings
+import kotlinx.android.synthetic.main.activity_main.buttonSetting
 import kotlinx.android.synthetic.main.activity_main.floatingActionButton
 import kotlinx.android.synthetic.main.activity_main.itemsNull
 import kotlinx.android.synthetic.main.activity_main.recyclerView
@@ -21,7 +28,8 @@ class MainActivity : AppCompatActivity() {
 
     private val contacts: MutableList<Contact> = ArrayList()
     private lateinit var adapter: ContactsRecyclerAdapter
-
+    private val settingsDialogFragment = SettingsDialogFragment()
+    private val settingsSharedPreferences = SharedPreferencesSettings()
     private lateinit var dbInterface: DBInterface
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,13 +48,19 @@ class MainActivity : AppCompatActivity() {
         floatingActionButton.setOnClickListener { addContact() }
 
         searchListener()
+        settingsClick()
     }
 
     private fun dataBaseInitialization() {
         val dbHelper = DBHelper(this)
-//        dbInterface = ThreadHandlerRepository(dbHelper)
-//        dbInterface = RxJavaRepository(dbHelper)
-        dbInterface = TreadCompletableRepository(dbHelper)
+        dbInterface = settingsSharedPreferences.asyncWork(applicationContext,dbHelper)!!
+    }
+
+    private fun settingsClick() {
+        buttonSetting.setOnClickListener {
+            val manager = supportFragmentManager
+            settingsDialogFragment.show(manager, "SettingsDialog")
+        }
     }
 
     private val adapterClickListener = object : OnItemClickListener {

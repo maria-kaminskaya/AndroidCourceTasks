@@ -1,4 +1,4 @@
-package com.kmnvxh222.task6
+package com.kmnvxh222.task6.model
 
 enum class EnumTypeInfo {
     email,

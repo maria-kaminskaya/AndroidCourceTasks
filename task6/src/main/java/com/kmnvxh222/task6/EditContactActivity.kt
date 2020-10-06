@@ -6,7 +6,9 @@ import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
 import com.kmnvxh222.task6.db.DBHelper
 import com.kmnvxh222.task6.db.DBInterface
-import com.kmnvxh222.task6.db.async.TreadCompletableRepository
+import com.kmnvxh222.task6.async.TreadCompletableRepository
+import com.kmnvxh222.task6.model.Contact
+import com.kmnvxh222.task6.settings.SharedPreferencesSettings
 import kotlinx.android.synthetic.main.activity_edit_contact.editTextInfo
 import kotlinx.android.synthetic.main.activity_edit_contact.editTextName
 import kotlinx.android.synthetic.main.activity_edit_contact.removeButton
@@ -17,6 +19,7 @@ class EditContactActivity : AppCompatActivity() {
     private var editContact: Contact? = null
     private lateinit var id: String
     private lateinit var dbInterface: DBInterface
+    private val settingsSharedPreferences = SharedPreferencesSettings()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,11 +36,7 @@ class EditContactActivity : AppCompatActivity() {
 
     private fun dataBaseInitialization() {
         val dbHelper = DBHelper(this)
-
-
-//        dbInterface = ThreadHandlerRepository(dbHelper)
-//        dbInterface = RxJavaRepository(dbHelper)
-        dbInterface = TreadCompletableRepository(dbHelper)
+        dbInterface = settingsSharedPreferences.asyncWork(applicationContext,dbHelper)!!
     }
 
     private fun getData() {

@@ -1,8 +1,8 @@
-package com.kmnvxh222.task6.db.async;
+package com.kmnvxh222.task6.async;
 
 import android.os.Handler;
 
-import com.kmnvxh222.task6.Contact;
+import com.kmnvxh222.task6.model.Contact;
 import com.kmnvxh222.task6.db.DBHelper;
 import com.kmnvxh222.task6.db.DBInterface;
 import com.kmnvxh222.task6.db.DBListener;

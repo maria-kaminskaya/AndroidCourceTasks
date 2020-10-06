@@ -1,6 +1,6 @@
 package com.kmnvxh222.task6.db;
 
-import com.kmnvxh222.task6.Contact;
+import com.kmnvxh222.task6.model.Contact;
 
 import java.util.List;
 

@@ -6,4 +6,17 @@
     <string name="remove">Remove</string>
     <string name="phone_number">Phone number</string>
     <string name="email">Email</string>
+
+    <string name="settingsTitle">Select async work type</string>
+    <string name="settingsMessage">Selected async work type: </string>
+    <string name="settingsOK">OK</string>
+    <string name="settingsCanceled">Cancel</string>
+    <string name="errorDialog">Activity cannot be null</string>
+
+    <string name="threadHandlerTitle">ThreadPoolExecutor + Handler</string>
+    <string name="threadHandlerValue">ThreadHandlerRepository</string>
+    <string name="threadCompletableTitle">CompletableFuture + ThreadPoolExecutor</string>
+    <string name="threadCompletableValue">TreadCompletableRepository</string>
+    <string name="rxJavaTitle">RxJava</string>
+    <string name="rxJavaValue">RxJavaRepository</string>
 </resources>

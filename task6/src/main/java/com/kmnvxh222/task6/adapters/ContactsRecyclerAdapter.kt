@@ -1,10 +1,13 @@
-package com.kmnvxh222.task6
+package com.kmnvxh222.task6.adapters
 
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.kmnvxh222.task6.R
+import com.kmnvxh222.task6.model.Contact
+import com.kmnvxh222.task6.model.EnumTypeInfo
 import kotlinx.android.synthetic.main.item_contact.view.imageView
 import kotlinx.android.synthetic.main.item_contact.view.textViewInfo
 import kotlinx.android.synthetic.main.item_contact.view.textViewName

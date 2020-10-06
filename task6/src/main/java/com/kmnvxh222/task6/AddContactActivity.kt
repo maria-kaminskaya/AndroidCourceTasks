@@ -6,7 +6,10 @@ import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import com.kmnvxh222.task6.db.DBHelper
 import com.kmnvxh222.task6.db.DBInterface
-import com.kmnvxh222.task6.db.async.TreadCompletableRepository
+import com.kmnvxh222.task6.async.TreadCompletableRepository
+import com.kmnvxh222.task6.model.Contact
+import com.kmnvxh222.task6.model.EnumTypeInfo
+import com.kmnvxh222.task6.settings.SharedPreferencesSettings
 import kotlinx.android.synthetic.main.activity_add_contact.editTextInfo
 import kotlinx.android.synthetic.main.activity_add_contact.editTextName
 import kotlinx.android.synthetic.main.activity_add_contact.radioButtonEmail
@@ -18,6 +21,7 @@ class AddContactActivity : AppCompatActivity() {
     private lateinit var typeInfo: String
     private var contact: Contact? = null
     private lateinit var dbInterface: DBInterface
+    private val settingsSharedPreferences = SharedPreferencesSettings()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,10 +37,7 @@ class AddContactActivity : AppCompatActivity() {
 
     private fun dataBaseInitialization() {
         val dbHelper = DBHelper(this)
-
-
-//        dbInterface = RxJavaRepository(dbHelper)
-        dbInterface = TreadCompletableRepository(dbHelper)
+        dbInterface = settingsSharedPreferences.asyncWork(applicationContext,dbHelper)!!
     }
 
     private val radioButtonClickListener = View.OnClickListener { v ->
