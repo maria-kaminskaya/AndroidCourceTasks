@@ -6,7 +6,6 @@ import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
 import com.kmnvxh222.task6.db.DBHelper
 import com.kmnvxh222.task6.db.DBInterface
-import com.kmnvxh222.task6.async.TreadCompletableRepository
 import com.kmnvxh222.task6.model.Contact
 import com.kmnvxh222.task6.settings.SharedPreferencesSettings
 import kotlinx.android.synthetic.main.activity_edit_contact.editTextInfo
@@ -16,8 +15,6 @@ import kotlinx.android.synthetic.main.activity_edit_contact.toolbar
 
 class EditContactActivity : AppCompatActivity() {
 
-    private var editContact: Contact? = null
-    private lateinit var id: String
     private lateinit var dbInterface: DBInterface
     private val settingsSharedPreferences = SharedPreferencesSettings()
 
@@ -30,17 +27,18 @@ class EditContactActivity : AppCompatActivity() {
 
         getData()
 
-        toolbar.setNavigationOnClickListener { saveEditData(editContact) }
-        removeButton.setOnClickListener { removeData(id) }
+        toolbar.setNavigationOnClickListener { saveEditData(getData()) }
+        removeButton.setOnClickListener { removeData(getData()?.id!!) }
     }
 
     private fun dataBaseInitialization() {
         val dbHelper = DBHelper(this)
-        dbInterface = settingsSharedPreferences.asyncWork(applicationContext,dbHelper)!!
+        dbInterface = settingsSharedPreferences.asyncWork(applicationContext, dbHelper)!!
     }
 
-    private fun getData() {
-        id = intent.getSerializableExtra("ID") as String
+    private fun getData(): Contact? {
+        val id = intent.getSerializableExtra("ID") as String
+        var editContact: Contact? = null
         dbInterface.getContactByID(id) {
             for (i in it) {
                 if (i.id == id) {
@@ -48,10 +46,13 @@ class EditContactActivity : AppCompatActivity() {
                     editTextName.setText(editContact?.name)
                     editTextInfo.setText(editContact?.info)
                     editData(editContact!!)
+
                 }
             }
 
         }
+
+        return editContact
     }
 
     private fun editData(editContact: Contact) {

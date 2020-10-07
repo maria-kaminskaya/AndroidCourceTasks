@@ -10,11 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kmnvxh222.task6.adapters.ContactsRecyclerAdapter
 import com.kmnvxh222.task6.adapters.ContactsRecyclerAdapter.OnItemClickListener
-import com.kmnvxh222.task6.async.RxJavaRepository
-import com.kmnvxh222.task6.async.ThreadHandlerRepository
 import com.kmnvxh222.task6.db.DBHelper
 import com.kmnvxh222.task6.db.DBInterface
-import com.kmnvxh222.task6.async.TreadCompletableRepository
 import com.kmnvxh222.task6.model.Contact
 import com.kmnvxh222.task6.settings.SettingsDialogFragment
 import com.kmnvxh222.task6.settings.SharedPreferencesSettings
@@ -39,9 +36,14 @@ class MainActivity : AppCompatActivity() {
         dataBaseInitialization()
 
         adapter = ContactsRecyclerAdapter(contacts)
+        adapter.setOnItemClickListener(adapterClickListener)
 
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        getAllContacts()
+
+        recyclerView.let { it ->
+            it.adapter = adapter
+            it.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        }
 
         adapter.setOnItemClickListener(adapterClickListener)
 
@@ -53,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun dataBaseInitialization() {
         val dbHelper = DBHelper(this)
-        dbInterface = settingsSharedPreferences.asyncWork(applicationContext,dbHelper)!!
+        dbInterface = settingsSharedPreferences.asyncWork(applicationContext, dbHelper)!!
     }
 
     private fun settingsClick() {
@@ -86,7 +88,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 itemsNull.text = ""
             }
-            adapter.notifyDataSetChanged()
+            adapter.updateList(contacts)
         }
     }
 

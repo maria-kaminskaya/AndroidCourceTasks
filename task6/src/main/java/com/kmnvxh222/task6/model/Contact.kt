@@ -2,28 +2,9 @@ package com.kmnvxh222.task6.model
 
 import java.io.Serializable
 
-class Contact(
+data class Contact(
         var id: String,
         var name: String,
         var typeInfo: String,
         var info: String
-) : Serializable {
-
-    override fun equals(other: Any?): Boolean {
-        if (other === this) return true
-        if (other !is Contact) {
-            return false
-        }
-        return name == other.name &&
-                typeInfo == other.typeInfo &&
-                info == other.info
-    }
-
-    override fun hashCode(): Int {
-        var result = id.hashCode()
-        result = 31 * result + name.hashCode()
-        result = 31 * result + typeInfo.hashCode()
-        result = 31 * result + info.hashCode()
-        return result
-    }
-}
+) : Serializable
