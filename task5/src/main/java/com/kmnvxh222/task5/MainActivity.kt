@@ -30,13 +30,14 @@ class MainActivity : AppCompatActivity() {
         dataBaseInitialization()
 
         adapter = ContactsRecyclerAdapter(contacts)
+        adapter.setOnItemClickListener(adapterClickListener)
 
         getAllContacts()
 
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-
-        adapter.setOnItemClickListener(adapterClickListener)
+        recyclerView.let { it ->
+            it.adapter = adapter
+            it.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        }
 
         floatingActionButton.setOnClickListener { addContact() }
 
@@ -69,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             itemsNull.text = ""
         }
-        adapter.notifyDataSetChanged()
+        adapter.updateList(contacts)
     }
 
     private fun searchListener() {

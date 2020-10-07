@@ -13,8 +13,6 @@ import kotlinx.android.synthetic.main.activity_edit_contact.toolbar
 
 class EditContactActivity : AppCompatActivity() {
 
-    private var editContact: Contacts? = null
-    private lateinit var id: String
     private lateinit var db: SQLiteDatabase
     private lateinit var dbHelper: DBHelper
 
@@ -26,8 +24,8 @@ class EditContactActivity : AppCompatActivity() {
 
         getData()
 
-        toolbar.setNavigationOnClickListener { saveEditData(editContact) }
-        removeButton.setOnClickListener { removeData(id) }
+        toolbar.setNavigationOnClickListener { saveEditData(getData()) }
+        removeButton.setOnClickListener { removeData(getData()?.id!!) }
     }
 
     private fun dataBaseInitialization() {
@@ -35,12 +33,13 @@ class EditContactActivity : AppCompatActivity() {
         db = dbHelper.writableDatabase
     }
 
-    private fun getData() {
-        id = intent.getSerializableExtra("ID") as String
-        editContact = dbHelper.getContactByID(id, db)
+    private fun getData(): Contacts? {
+        val id = intent.getSerializableExtra("ID") as String
+        val editContact = dbHelper.getContactByID(id, db)
         editTextName.setText(editContact?.name)
         editTextInfo.setText(editContact?.info)
         editData(editContact!!)
+        return editContact
     }
 
     private fun editData(editContact: Contacts) {

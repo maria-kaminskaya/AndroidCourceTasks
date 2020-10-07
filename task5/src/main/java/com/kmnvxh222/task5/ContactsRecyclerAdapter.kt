@@ -1,6 +1,5 @@
 package com.kmnvxh222.task5
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,14 +14,14 @@ class ContactsRecyclerAdapter(private var contacts: MutableList<Contacts>) : Rec
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactsViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_contact, parent, false)
-        return ContactsViewHolder(view)
+        return ContactsViewHolder(view, mItemClickListener)
     }
 
     override fun getItemCount(): Int = contacts.size
 
     override fun onBindViewHolder(holder: ContactsViewHolder, position: Int) = holder.bind(contacts[position])
 
-    inner class ContactsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    class ContactsViewHolder(itemView: View, private val mItemClickListener: OnItemClickListener) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
         init {
             itemView.setOnClickListener(this)
@@ -30,7 +29,6 @@ class ContactsRecyclerAdapter(private var contacts: MutableList<Contacts>) : Rec
 
         fun bind(contact: Contacts) {
             var idSrc = 0
-            try {
                 itemView.textViewName.text = contact.name
 
                 when (contact.typeInfo) {
@@ -43,11 +41,7 @@ class ContactsRecyclerAdapter(private var contacts: MutableList<Contacts>) : Rec
                         idSrc = R.drawable.contact_phone
                     }
                 }
-
                 itemView.imageView.setImageResource(idSrc)
-            } catch (e: Exception) {
-                Log.d("ContactsRecyclerAdapter", "$e")
-            }
         }
 
         override fun onClick(v: View) = mItemClickListener.onItemClick(v, adapterPosition)
