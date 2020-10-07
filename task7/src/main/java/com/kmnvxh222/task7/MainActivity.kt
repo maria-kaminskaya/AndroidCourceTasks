@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.kmnvxh222.task7.dataStorage.DataStorageInterface
 import com.kmnvxh222.task7.dataStorage.ExternalDataStorage
 import com.kmnvxh222.task7.dataStorage.InternalDataStorage
 import com.kmnvxh222.task7.settings.SettingsDialogFragment
@@ -16,9 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     private val broadcastReceiver = MainBroadcastReceiver()
     private val settingsSharedPreferences = SharedPreferencesSettings()
-    private val externalDataStorage = ExternalDataStorage()
-    private val internalDataStorage = InternalDataStorage()
-    private val settingsDialogFragment = SettingsDialogFragment()
+    private lateinit var dataStorage: DataStorageInterface
     private var typeDataStorage: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         registrationBroadcastReceiver()
         settingsClick()
-        setTypeDataStorage()
+        setData()
     }
 
     private fun registrationBroadcastReceiver() {
@@ -41,26 +40,26 @@ class MainActivity : AppCompatActivity() {
     private fun settingsClick() {
         buttonSetting.setOnClickListener {
             val manager = supportFragmentManager
-            settingsDialogFragment.show(manager, "SettingsDialog")
+            SettingsDialogFragment().show(manager, "SettingsDialog")
         }
     }
 
-    private fun setTypeDataStorage() {
+    private fun setData() {
         typeDataStorage = settingsSharedPreferences.getSetting(applicationContext)
         textViewTypeStorage.text = typeDataStorage
-        setData(typeDataStorage)
+        definitionTypeDataStorage(typeDataStorage)
+        textViewFile.text = dataStorage.readData(applicationContext)
     }
 
-    private fun setData(typeDataStorage: String?) {
+    private fun definitionTypeDataStorage(typeDataStorage: String?) {
         when (typeDataStorage) {
-            resources.getString(R.string.externalDataStorage) -> textViewFile.text = externalDataStorage.readData(applicationContext)
-            resources.getString(R.string.internalDataStorage) -> textViewFile.text = internalDataStorage.readData(applicationContext)
-            else -> textViewFile.text = resources.getString(R.string.settingsTitle)
+            resources.getString(R.string.externalDataStorage) -> dataStorage = ExternalDataStorage()
+            resources.getString(R.string.internalDataStorage) -> dataStorage = InternalDataStorage()
         }
     }
 
     override fun onResume() {
         super.onResume()
-        setTypeDataStorage()
+        setData()
     }
 }

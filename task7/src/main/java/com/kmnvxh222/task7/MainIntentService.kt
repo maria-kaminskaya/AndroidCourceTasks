@@ -2,6 +2,7 @@ package com.kmnvxh222.task7
 
 import android.app.IntentService
 import android.content.Intent
+import com.kmnvxh222.task7.dataStorage.DataStorageInterface
 import com.kmnvxh222.task7.dataStorage.ExternalDataStorage
 import com.kmnvxh222.task7.dataStorage.InternalDataStorage
 import com.kmnvxh222.task7.model.Data
@@ -12,8 +13,7 @@ import java.util.*
 class MainIntentService(name: String? = "MainIntentService") : IntentService(name) {
 
     private var data: Data? = null
-    private val externalDataStorage = ExternalDataStorage()
-    private val internalDataStorage = InternalDataStorage()
+    private lateinit var dataStorage: DataStorageInterface
     private val settingsSharedPreferences = SharedPreferencesSettings()
 
     override fun onHandleIntent(intent: Intent?) {
@@ -26,9 +26,14 @@ class MainIntentService(name: String? = "MainIntentService") : IntentService(nam
     }
 
     private fun writeDataInFile(data: Data) {
-        when (settingsSharedPreferences.getSetting(applicationContext)) {
-            resources.getString(R.string.externalDataStorage) -> externalDataStorage.writeData(applicationContext, data)
-            resources.getString(R.string.internalDataStorage) -> internalDataStorage.writeData(applicationContext, data)
+        definitionTypeDataStorage(settingsSharedPreferences.getSetting(applicationContext))
+        dataStorage.writeData(applicationContext, data)
+    }
+
+    private fun definitionTypeDataStorage(typeDataStorage: String?) {
+        when (typeDataStorage) {
+            resources.getString(R.string.externalDataStorage) -> dataStorage = ExternalDataStorage()
+            resources.getString(R.string.internalDataStorage) -> dataStorage = InternalDataStorage()
         }
     }
 }
