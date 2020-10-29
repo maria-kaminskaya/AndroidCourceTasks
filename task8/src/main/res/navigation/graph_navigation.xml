@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/graph_navigation"
+    app:startDestination="@id/weatherFragment">
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.kmnvxh222.task8.view.WeatherFragment"
+        android:label="WeatherFragment" >
+        <action
+            android:id="@+id/action_weatherFragment_to_cityFragment2"
+            app:destination="@id/cityFragment2" />
+        <action
+            android:id="@+id/action_weatherFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cityFragment2"
+        android:name="com.kmnvxh222.task8.view.CityFragment"
+        android:label="CityFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.kmnvxh222.task8.view.SettingsFragment"
+        android:label="SettingsFragment" />
+</navigation>
