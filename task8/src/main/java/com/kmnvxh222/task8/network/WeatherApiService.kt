@@ -5,6 +5,9 @@ import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+
+//http://openweathermap.org/img/wn/icon.png
+
 interface WeatherApiService{
 
     companion object {
@@ -14,6 +17,7 @@ interface WeatherApiService{
 
     @GET("forecast?appid=$API_KEY")
     fun getWeatherCity(
-            @Query("city") city: String
+            @Query("q") q: String
     ): Deferred<WeatherResponse>
+
 }
