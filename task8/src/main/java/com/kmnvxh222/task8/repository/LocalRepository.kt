@@ -10,6 +10,7 @@ import com.kmnvxh222.task8.model.City
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class LocalRepository(context: Context) : CityDao {
@@ -54,15 +55,15 @@ class LocalRepository(context: Context) : CityDao {
     }
 
     override fun getAllLiveData(): LiveData<List<City>>? {
-        var listCitys: LiveData<List<City>>? = MutableLiveData()
-        try {
-            coroutineScope.launch {
+        var listCitys: LiveData<List<City>>? = null
+//        try {
+//            coroutineScope.launch {
                 listCitys = dbDao.getAllLiveData()
                 Log.d("LocalRepository", " getAllLiveData ${listCitys?.value}")
-            }
-        } catch (e: Exception) {
-            Log.d("LocalRepository", "error getAllLiveData ${e}")
-        }
+//            }
+//        } catch (e: Exception) {
+//            Log.d("LocalRepository", "error getAllLiveData ${e}")
+//        }
         return listCitys
     }
 

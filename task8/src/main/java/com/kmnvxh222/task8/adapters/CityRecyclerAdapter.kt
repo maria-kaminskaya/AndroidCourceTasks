@@ -3,6 +3,7 @@ package com.kmnvxh222.task8.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.kmnvxh222.task8.R
 import com.kmnvxh222.task8.model.City
@@ -37,7 +38,6 @@ class CityRecyclerAdapter(private var cityList: List<City>) :
         }
 
         override fun onClick(v: View) {
-            itemView.imageViewChange.visibility = View.VISIBLE
             return mItemClickListener.onItemClick(v, adapterPosition)}
     }
 
@@ -52,6 +52,7 @@ class CityRecyclerAdapter(private var cityList: List<City>) :
 
     fun setOnItemClickListener(mItemClickListener: OnItemClickListener) {
         this.mItemClickListener = mItemClickListener
+
     }
 
 }

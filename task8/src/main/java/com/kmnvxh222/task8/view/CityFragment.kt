@@ -5,17 +5,20 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.kmnvxh222.task8.R
 import com.kmnvxh222.task8.adapters.CityRecyclerAdapter
 import com.kmnvxh222.task8.databinding.FragmentCityBinding
 import com.kmnvxh222.task8.model.City
 import com.kmnvxh222.task8.presenter.CityPresenter
 import com.kmnvxh222.task8.presenter.CityPresenterInterface
 import com.kmnvxh222.task8.repository.LocalRepository
+import kotlinx.android.synthetic.main.item_city.view.imageViewChange
 
 class CityFragment() : Fragment() {
 
@@ -39,25 +42,27 @@ class CityFragment() : Fragment() {
 
     private fun adapterInitialisation() {
         presenter.getAllCity()?.observe(viewLifecycleOwner, Observer {
-//            if (it != null) {
                 listCity = it
-
             Log.d("CityFragment", " getAllCity $it")
                 adapter = CityRecyclerAdapter(listCity)
                 adapter.setOnItemClickListener(adapterClickListener)
                 binding.recyclerViewCity.let { it ->
                     it.adapter = adapter
                     it.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-//                }
-
+                }
                 adapter.setOnItemClickListener(adapterClickListener)
-            }
+
         })
     }
 
     private val adapterClickListener = object : CityRecyclerAdapter.OnItemClickListener {
         override fun onItemClick(view: View, position: Int) {
-            presenter.updateCity(listCity[position])
+            val currentDate = System.currentTimeMillis()
+            Log.d("CityFragment", "$currentDate")
+            val city = listCity[position]
+            city.date = currentDate
+            presenter.updateCity(city)
+            view.imageViewChange.visibility = View.VISIBLE
         }
     }
 

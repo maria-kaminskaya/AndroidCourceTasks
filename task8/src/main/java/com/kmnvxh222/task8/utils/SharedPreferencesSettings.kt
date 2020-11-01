@@ -10,19 +10,19 @@ class SharedPreferencesSettings {
         const val SETTING_FILE_NAME = "SettingPreferences"
     }
 
-    private var setting: String? = ""
+    private var setting: Boolean? = null
 
-    fun saveSetting(setting: String, context: Context) {
+    fun saveSetting(setting: Boolean, context: Context) {
         val shared: SharedPreferences? = context.getSharedPreferences(SETTING_FILE_NAME, Context.MODE_PRIVATE)
         val edit: SharedPreferences.Editor? = shared?.edit()
         edit?.clear()
-        edit?.putString(PREF_KEY, setting)
+        edit?.putBoolean(PREF_KEY, setting)
         edit?.apply()
     }
 
-    fun getSetting(context: Context): String? {
+    fun getSetting(context: Context): Boolean? {
         val shared: SharedPreferences? = context.getSharedPreferences(SETTING_FILE_NAME, Context.MODE_PRIVATE)
-        setting = shared?.getString(PREF_KEY, "")
+        setting = shared?.getBoolean(PREF_KEY, true)
         return setting
     }
 

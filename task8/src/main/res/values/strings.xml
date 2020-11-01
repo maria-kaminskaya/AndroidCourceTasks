@@ -5,4 +5,8 @@
     <string name="cancel">Cancel</string>
     <string name="done">Done</string>
     <string name="errorDialog">Error</string>
+    <string name="weather">Weather</string>
+    <string name="setting">Setting</string>
+    <string name="city">City</string>
+    <string name="celsius">Celsius</string>
 </resources>

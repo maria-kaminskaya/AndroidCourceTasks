@@ -19,10 +19,15 @@ class RemoteRepository: RemoteRepositoryInterface{
             coroutineScope.launch {
                 val response = RetrofitApi.retrofitApiService.getWeatherCity(city)
                 weatherData.value = response.await()
+                if (weatherData.value!!.cod == 404){
+                    weatherData.value = null
+                    Log.d("RemoteRepository", " getDataWeather 404 ${weatherData.value!!.message}")
+
+                }
                 Log.d("RemoteRepository", " getDataWeather ${response.isCompleted}")
                 Log.d("RemoteRepository", " getDataWeather ${weatherData.value}")
             }
-        } catch (e: Error) {
+        } catch (e: Exception) {
             Log.d("RemoteRepository", "error getDataWeather ${e}")
         }
         return weatherData

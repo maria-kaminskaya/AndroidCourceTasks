@@ -15,10 +15,13 @@ import com.kmnvxh222.task8.R
 import com.kmnvxh222.task8.adapters.WeatherRecyclerAdapter
 import com.kmnvxh222.task8.databinding.FragmentWeatherBinding
 import com.kmnvxh222.task8.model.City
+import com.kmnvxh222.task8.utils.SharedPreferencesSettings
+import com.kmnvxh222.task8.utils.TempMapper
 import com.kmnvxh222.task8.viewmodel.ViewModelFactory
 import com.kmnvxh222.task8.viewmodel.WeatherViewModel
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class WeatherFragment() : Fragment() {
 
@@ -33,22 +36,24 @@ class WeatherFragment() : Fragment() {
         binding = FragmentWeatherBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this, ViewModelFactory(requireContext())).get(WeatherViewModel::class.java)
         getCity()
-        listenerNavigationToCity()
+        listenerNavigation()
         return binding.root
     }
 
-    private fun listenerNavigationToCity() {
+    private fun listenerNavigation() {
         binding.floatingActionButton.setOnClickListener {
             NavHostFragment.findNavController(this).navigate(R.id.cityFragment2)
+        }
+
+        binding.buttonSetting.setOnClickListener {
+            NavHostFragment.findNavController(this).navigate(R.id.settingsFragment)
         }
     }
 
     private fun setWeather(city: String) {
-//        if (city != null) {
             viewModel.getWeatherDate(city).observe(viewLifecycleOwner, Observer {
                 if (it != null) {
-                    adapter = WeatherRecyclerAdapter(it.list)
-
+                    adapter = WeatherRecyclerAdapter(it.list, requireContext())
                     binding.recyclerViewWeather.let { it ->
                         it.adapter = adapter
                         it.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
@@ -66,8 +71,12 @@ class WeatherFragment() : Fragment() {
                     for (i in it.list) {
                         if (i.dt == date) {
                            val icon = i.weather[0].icon
-                            Glide.with(this).load("http://openweathermap.org/img/wn/$icon.png").into(binding.imageViewWeather)
-                            binding.textViewTemp.text = i.main.temp.toString()
+                            Glide.with(this).load("https://openweathermap.org/img/wn/$icon.png").into(binding.imageViewWeather)
+
+                            val setting = SharedPreferencesSettings().getSetting(requireContext())
+                            val temp = TempMapper().convertTemp(setting,i.main.temp)
+                            binding.textViewTemp.text = temp
+
                             binding.textViewWeather.text = i.weather[0].description
                         }
                     }
@@ -76,30 +85,27 @@ class WeatherFragment() : Fragment() {
 
                 }
             })
-//        }
     }
 
     private fun getCity() {
-        var city: String = "Minsk"
         viewModel.getAllCity()?.observe(viewLifecycleOwner, Observer {
-            if (checkDate(it) == null || it.isEmpty()) {
-                city = "Minsk"
-            } else if (checkDate(it) != null) {
-                city = checkDate(it)!!
-
+            val cityName = checkDate(it)
+            if (cityName == null || it.isEmpty()) {
+                setWeather("Minsk")
+            } else if (cityName != null) {
+                setWeather(cityName)
             }
 
         })
-        setWeather(city)
     }
 
     private fun checkDate(list: List<City>): String? {
         val currentDate = System.currentTimeMillis()
-        var listDate: List<Long>? = null
+        var listDate: MutableList<Long>? = ArrayList()
         var date: Long? = null
         var cityName: String? = null
         for (i in list) {
-            listDate = listOf(i.date)
+            listDate?.add(i.date)
         }
         if (listDate != null) {
             date = getDateNearest(listDate, currentDate)

@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 
 object RetrofitApi {
-    private const val BASE_URL = "http://api.openweathermap.org/data/2.5/"
+    private const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
     private var gson: Gson = GsonBuilder()
             .setLenient()
             .create()

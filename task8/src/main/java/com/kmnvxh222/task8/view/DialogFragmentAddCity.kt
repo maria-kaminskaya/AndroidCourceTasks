@@ -26,21 +26,7 @@ class DialogFragmentAddCity(context: Context): DialogFragment(){
             builder.setTitle(R.string.enter_the_city_name)
                     .setView(editText)
                     .setPositiveButton(R.string.done) { _, _ ->
-                        var cityName = ""
-//                        editText.addTextChangedListener(object : TextWatcher {
-//                            override fun afterTextChanged(s: Editable?) {
-////                                cityName = s.toString()
-//                            }
-//                            override fun beforeTextChanged(s: CharSequence, start: Int,count: Int, after: Int){
-//                                cityName = s.toString()
-//                            }
-//
-//                            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-//                                cityName = s.toString()
-//                            }
-//                        }
-//                        )
-                        cityName = editText.text.toString()
+                        val cityName = editText.text.toString()
                         val city = City(cityName,System.currentTimeMillis())
                         presenter.addCity(city)
                         dialog?.dismiss()
