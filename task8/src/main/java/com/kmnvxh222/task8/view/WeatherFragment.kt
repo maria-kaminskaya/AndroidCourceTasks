@@ -121,4 +121,9 @@ class WeatherFragment() : Fragment() {
     private fun getDateNearest(dates: List<Long>, targetDate: Long): Long {
         return TreeSet(dates).lower(targetDate)
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.close()
+    }
 }

@@ -24,8 +24,6 @@ class RemoteRepository: RemoteRepositoryInterface{
                     Log.d("RemoteRepository", " getDataWeather 404 ${weatherData.value!!.message}")
 
                 }
-                Log.d("RemoteRepository", " getDataWeather ${response.isCompleted}")
-                Log.d("RemoteRepository", " getDataWeather ${weatherData.value}")
             }
         } catch (e: Exception) {
             Log.d("RemoteRepository", "error getDataWeather ${e}")
@@ -33,7 +31,7 @@ class RemoteRepository: RemoteRepositoryInterface{
         return weatherData
     }
 
-    fun close() {
+    override fun close() {
         job.cancel()
     }
 }

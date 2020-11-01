@@ -20,4 +20,9 @@ class WeatherViewModel(context: Context) : ViewModel() {
         return remoteRepository.getDataWeather(city) }
 
     fun getAllCity() = localRepository.getAllLiveData()
+
+    fun close(){
+        localRepository.close()
+        remoteRepository.close()
+    }
 }

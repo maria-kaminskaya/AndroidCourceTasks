@@ -2,6 +2,7 @@ package com.kmnvxh222.task8.view
 
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -37,4 +38,5 @@ class DialogFragmentAddCity(context: Context): DialogFragment(){
             builder.create()
         }?: throw IllegalStateException(getString(R.string.errorDialog))
     }
+
 }

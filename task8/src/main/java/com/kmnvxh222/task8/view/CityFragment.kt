@@ -73,5 +73,15 @@ class CityFragment() : Fragment() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.close()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        adapterInitialisation()
+        adapter.notifyDataSetChanged()
+    }
 
 }

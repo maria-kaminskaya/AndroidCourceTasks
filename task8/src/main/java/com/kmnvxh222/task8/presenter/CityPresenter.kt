@@ -11,20 +11,14 @@ class CityPresenter(private var localRepository: LocalRepository): CityPresenter
         localRepository.insertNewCity(city)
     }
 
-    override fun deleteCity(city: City) {
-        localRepository.deleteCity(city)
-    }
-
     override fun getAllCity(): LiveData<List<City>>? = localRepository.getAllLiveData()
-
-    override fun getCityById(id: Long): LiveData<City>? = localRepository.getCityById(id)
-
-    override fun deleteAllCitys() {
-        localRepository.deleteAllCitys()
-    }
 
     override fun updateCity(city: City) {
         localRepository.updateCity(city)
+    }
+
+    override fun close() {
+        localRepository.close()
     }
 
 }
