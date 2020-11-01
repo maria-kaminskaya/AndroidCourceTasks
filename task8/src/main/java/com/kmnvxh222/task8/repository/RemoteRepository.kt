@@ -9,24 +9,19 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class RemoteRepository: RemoteRepositoryInterface{
+class RemoteRepository : RemoteRepositoryInterface {
     private var job = Job()
     private val coroutineScope = CoroutineScope(job + Dispatchers.Main)
 
-  override fun getDataWeather(city: String): MutableLiveData<WeatherResponse?> {
+    override fun getDataWeather(city: String): MutableLiveData<WeatherResponse?> {
         val weatherData = MutableLiveData<WeatherResponse?>()
-        try {
-            coroutineScope.launch {
+        coroutineScope.launch {
+            try {
                 val response = RetrofitApi.retrofitApiService.getWeatherCity(city)
                 weatherData.value = response.await()
-                if (weatherData.value!!.cod == 404){
-                    weatherData.value = null
-                    Log.d("RemoteRepository", " getDataWeather 404 ${weatherData.value!!.message}")
-
-                }
+            } catch (e: Exception) {
+                Log.d("RemoteRepository", "error getDataWeather ${e}")
             }
-        } catch (e: Exception) {
-            Log.d("RemoteRepository", "error getDataWeather ${e}")
         }
         return weatherData
     }
