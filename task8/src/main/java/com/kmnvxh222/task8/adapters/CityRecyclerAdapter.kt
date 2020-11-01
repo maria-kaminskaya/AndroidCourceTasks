@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kmnvxh222.task8.R
 import com.kmnvxh222.task8.model.City
+import kotlinx.android.synthetic.main.item_city.view.imageViewChange
 import kotlinx.android.synthetic.main.item_city.view.textViewCityName
 
 class CityRecyclerAdapter(private var cityList: List<City>) :
@@ -35,7 +36,9 @@ class CityRecyclerAdapter(private var cityList: List<City>) :
             itemView.textViewCityName.text = city.content
         }
 
-        override fun onClick(v: View) = mItemClickListener.onItemClick(v, adapterPosition)
+        override fun onClick(v: View) {
+            itemView.imageViewChange.visibility = View.VISIBLE
+            return mItemClickListener.onItemClick(v, adapterPosition)}
     }
 
     fun updateList(cityList: List<City>) {

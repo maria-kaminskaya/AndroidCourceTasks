@@ -9,4 +9,5 @@ interface CityPresenterInterface {
     fun getAllCity(): LiveData<List<City>>?
     fun getCityById(id: Long): LiveData<City>?
     fun deleteAllCitys()
+    fun updateCity(city: City)
 }

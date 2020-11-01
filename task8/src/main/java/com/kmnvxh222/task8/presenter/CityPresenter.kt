@@ -23,4 +23,8 @@ class CityPresenter(private var localRepository: LocalRepository): CityPresenter
         localRepository.deleteAllCitys()
     }
 
+    override fun updateCity(city: City) {
+        localRepository.updateCity(city)
+    }
+
 }

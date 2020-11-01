@@ -3,6 +3,7 @@ package com.kmnvxh222.task8.repository
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.kmnvxh222.task8.db.CityDao
 import com.kmnvxh222.task8.db.getAppDatabase
 import com.kmnvxh222.task8.model.City
@@ -30,6 +31,17 @@ class LocalRepository(context: Context) : CityDao {
         }
     }
 
+    override fun updateCity(city: City) {
+        try {
+            coroutineScope.launch {
+                dbDao.updateCity(city)
+                Log.d("LocalRepository", " updateCity")
+            }
+        } catch (e: Exception) {
+            Log.d("LocalRepository", "error updateCity ${e}")
+        }
+    }
+
     override fun deleteCity(city: City) {
         try {
             coroutineScope.launch {
@@ -42,11 +54,10 @@ class LocalRepository(context: Context) : CityDao {
     }
 
     override fun getAllLiveData(): LiveData<List<City>>? {
-        var listCitys: LiveData<List<City>>? = null
+        var listCitys: LiveData<List<City>>? = MutableLiveData()
         try {
             coroutineScope.launch {
                 listCitys = dbDao.getAllLiveData()
-                Log.d("LocalRepository", " getAllLiveData")
                 Log.d("LocalRepository", " getAllLiveData ${listCitys?.value}")
             }
         } catch (e: Exception) {
