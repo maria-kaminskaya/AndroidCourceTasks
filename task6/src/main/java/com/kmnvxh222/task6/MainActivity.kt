@@ -1,9 +1,12 @@
 package com.kmnvxh222.task6
 
 import android.content.Intent
+import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,6 +43,8 @@ class MainActivity : AppCompatActivity() {
 
         getAllContacts()
 
+        setContentResolver()
+
         recyclerView.let { it ->
             it.adapter = adapter
             it.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
@@ -51,6 +56,17 @@ class MainActivity : AppCompatActivity() {
 
         searchListener()
         settingsClick()
+    }
+
+    private fun setContentResolver(){
+        val cursor: Cursor? = contentResolver.query(Uri.parse(URI_PATH), null, null, null, null)
+        if (cursor != null) {
+            val descriptionInd = cursor.getColumnIndex ("description")
+            while (cursor.moveToNext()) {
+                Log.d("MainActivity", cursor.getString(descriptionInd))
+            }
+            cursor.close()
+        }
     }
 
     private fun dataBaseInitialization() {
@@ -123,6 +139,10 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         getAllContacts()
         adapter.notifyDataSetChanged()
+    }
+
+    companion object {
+        private const val URI_PATH = "content://com.kmnvxh222.task9/data/contacts"
     }
 
 }
