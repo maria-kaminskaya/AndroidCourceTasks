@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         getAllContacts()
 
-        setContentResolver()
+
 
         recyclerView.let { it ->
             it.adapter = adapter
@@ -56,17 +56,6 @@ class MainActivity : AppCompatActivity() {
 
         searchListener()
         settingsClick()
-    }
-
-    private fun setContentResolver(){
-        val cursor: Cursor? = contentResolver.query(Uri.parse(URI_PATH), null, null, null, null)
-        if (cursor != null) {
-            val descriptionInd = cursor.getColumnIndex ("description")
-            while (cursor.moveToNext()) {
-                Log.d("MainActivity", cursor.getString(descriptionInd))
-            }
-            cursor.close()
-        }
     }
 
     private fun dataBaseInitialization() {
@@ -139,10 +128,6 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         getAllContacts()
         adapter.notifyDataSetChanged()
-    }
-
-    companion object {
-        private const val URI_PATH = "content://com.kmnvxh222.task9/data/contacts"
     }
 
 }
