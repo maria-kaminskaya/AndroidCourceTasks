@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         setContentResolver()
-//        getAllContacts()
     }
 
     private fun setContentResolver(){
@@ -54,28 +53,18 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    companion object {
-        private const val URI_PATH = "content://com.kmnvxh222.task6/data/contacts"
-    }
-
-
     private fun dataBaseInitialization() {
         dbHelper = DBHelper(this)
     }
-
-//    private fun getAllContacts() {
-//        contacts.clear()
-//        contacts.addAll(dbHelper.getAllContacts())
-//        if (contacts.isEmpty()) {
-//            itemsNull.setText(R.string.no_contacts)
-//        } else {
-//            itemsNull.text = ""
-//        }
-//        adapter.updateList(contacts)
-//    }
 
     override fun onDestroy() {
         super.onDestroy()
         dbHelper.close()
     }
+
+
+    companion object {
+        private const val URI_PATH = "content://com.kmnvxh222.task6/data/contacts"
+    }
+
 }
