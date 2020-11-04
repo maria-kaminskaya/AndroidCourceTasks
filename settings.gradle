@@ -1,2 +1,3 @@
+include ':task9'
 include ':Task1'
 rootProject.name = "AndroidCourceTasks"
