@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">task3</string>
+    <string name="no_contacts">No contacts.Please add</string>
+    <string name="search">Search contacts</string>
+    <string name="name">Name</string>
+    <string name="remove">Remove</string>
+    <string name="phone_number">Phone number</string>
+    <string name="email">Email</string>
+
+    <string name="settingsTitle">Select async work type</string>
+    <string name="settingsMessage">Selected async work type: </string>
+    <string name="settingsOK">OK</string>
+    <string name="settingsCanceled">Cancel</string>
+    <string name="errorDialog">Activity cannot be null</string>
+
+    <string name="threadHandlerTitle">ThreadPoolExecutor + Handler</string>
+    <string name="threadHandlerValue">ThreadHandlerRepository</string>
+    <string name="threadCompletableTitle">CompletableFuture + ThreadPoolExecutor</string>
+    <string name="threadCompletableValue">TreadCompletableRepository</string>
+    <string name="rxJavaTitle">RxJava</string>
+    <string name="rxJavaValue">RxJavaRepository</string>
+</resources>
